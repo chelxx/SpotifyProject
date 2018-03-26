@@ -223,3 +223,19 @@ div.spotify-user-body {
     width: 1400px;
     text-align: justify;
 }
+td {
+    border-bottom: 1px solid #5B5B5B;
+}
+div.spotify-songs-body {
+    margin-top: 75px;
+    margin-left: 100px;
+    width: 1400px;
+    text-align: justify;
+}
+.sidelabel {
+    font-weight: 330;
+    letter-spacing: 2px;
+}
+td a{
+    color: white;
+}

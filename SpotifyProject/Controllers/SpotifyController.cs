@@ -72,5 +72,15 @@ namespace SpotifyProject.Controllers
             ViewBag.Username = HttpContext.Session.GetString("username");
             return View("UserProfile");
         }
+
+        [HttpGet]
+        [Route("songs/{userid}")]
+        public IActionResult Songs(int userid)
+        {
+            ViewBag.UserId = HttpContext.Session.GetInt32("userID");
+            ViewBag.FullName = HttpContext.Session.GetString("fullname");
+            ViewBag.Username = HttpContext.Session.GetString("username");
+            return View("UserSongs");
+        }
     }
 }
