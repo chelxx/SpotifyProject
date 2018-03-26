@@ -1,0 +1,105 @@
+/* THESE ARE THE CSS STYLINGS FOR THE LANDING, REGISTRATION, AND LOGIN PAGE */
+body {
+    background-color: #181818;
+    text-align: center;
+    margin: 50px 0 0 0;
+    background-image: url("/images/spotify_bg.png");
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+* {
+    margin: 50px;
+    color: #B3B3B3;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+h1.brand {
+    color: white;
+    font-size: 3em;
+}
+.or {
+    font-weight: 300;
+    line-height: 0.5;
+    text-align: center;
+}
+button.btn {
+    width: 400px;
+    padding: 10px;
+    border-radius: 20px;
+    background-color: #57B65F;
+    border: none;
+}
+button.btn:hover {
+    background-color: #65D46E;
+    transform: scale(1.05);
+    border-radius: 30px;
+}
+h1 {
+    overflow: hidden;
+    text-align: center;
+}
+h4.or:before, h4.or:after {
+    background-color: #B3B3B3;
+    content: "";
+    display: inline-block;
+    height: 1px;
+    position: relative;
+    vertical-align: middle;
+    width: 50%;
+}
+h4.or:before {
+    right: 0.5em;
+    margin-left: -50%;
+}
+h4.or:after {
+    left: 0.5em;
+    margin-right: -50%;
+}
+input.form-control, select.form-control {
+    background-color: #3d3d3d;
+    border: none;
+    color: #B3B3B3;
+}
+label.nope {
+    padding: 0;
+    margin: 10px 0 0 0;
+    float: left;
+    font-weight: 400;
+}
+div.container {
+    width: 600px;
+}
+a {
+    color: white;
+    text-decoration: none;
+    margin: 0px;
+}
+a:hover {
+    color: #55F03F;
+    text-decoration: underline;
+}
+a.logsign {
+    position: absolute;
+    bottom: 0;
+    text-align: center;
+    padding: 0;
+    margin: 0;
+}
+
+div.brand img {
+    float: left;
+    width: 65px;
+    margin: 0 0 0 100px;
+}
+  
+div.brand h1{
+    float: left;
+    margin: 10px 0 0 20px;
+}
+div.landing {
+    margin-bottom: 75px;
+}
+span.error {
+    color: tomato;
+}

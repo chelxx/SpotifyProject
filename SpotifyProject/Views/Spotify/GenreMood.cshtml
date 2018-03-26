@@ -1,0 +1,90 @@
+@{
+    ViewData["Title"] = "Spotify Dashboard";
+}
+<head>
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+
+<div class="topnav container-fluid navbar-fixed-top">
+    <input type="search" class="search" placeholder="Search">
+    <a href="/logout" class="topnavright">Log Out&emsp;</a>
+    <a href="/userprofile/@ViewBag.UserId" class="topnavright">&nbsp;@ViewBag.Username&emsp;&emsp;</a>
+    <img src="~/images/profile.png" alt="Spotify Logo" class="profile">
+</div>
+<div class="sidenav">
+    <a href="/overview" class="sidebar">Browse</a>
+    <br>
+    <a href="#" class="sidebar">Radio</a>
+    <br>
+    <br>
+    <h5 class="sidelabel">YOUR LIBRARY</h5>
+    <a href="#" class="sidebar">Songs</a>
+    <br>
+    <a href="#" class="sidebar">Albums</a>
+    <br>
+    <a href="#" class="sidebar">Artists</a>
+    <br>
+    <a href="#" class="sidebar">Stations</a>
+    <br>
+    <a href="#" class="sidebar">Podcasts</a>
+    <br>
+    <br>
+    <h5 class="sidelabel">PLAYLISTS</h5>
+    <a href="#" class="sidebar">Dima</a>
+    <br>
+    <a href="#" class="sidebar">Vanessa</a>
+    <br>
+    <a href="#" class="sidebar">Chelsea</a>
+    <br>
+</div>
+<br>
+<div class="featuredalbum">
+    <div class="featuredalbumblur"></div>
+    <div class="albumshow">
+        <img src="~/images/kishi_albumcover.jpg" alt="Kishi Bashi" class="albumcover">
+    </div>
+    <div class="albuminfo">
+        <h3 class="header">151a</h3>
+        <h6 class="header skinny">Kishi Bashi</h6>
+        <h6 class="header skinny">In 2014 Kishi Bashi released his own line of coffee through Jittery Joe's called Royal Daark Blend. Each purchase comes with an exclusive song download.</h6>
+        <form action="#">
+            <button class="btn btn-info albumplaysong">PLAY</button>
+        </form>
+    </div>
+    <div class="savebtn">
+        <form action="#">
+            <button class="savesong">SAVE</button>
+        </form>
+    </div>
+</div>
+
+<div class="spotify-body">
+    <ul class="nav nav-tabs">
+    <li><a href="/overview">OVERVIEW</a></li>
+    <li><a href="/podcasts">PODCASTS</a></li>
+    <li><a href="/concerts">CONCERTS</a></li>
+    <li><a href="/charts">CHARTS</a></li>
+    <li class="active"><a href="#">GENRES & MOODS</a></li>
+    </ul>
+</div>
+
+<!-- THIS IS THE LIMIT -->
+
+<div id="genremood" class="tabcontent">
+    <h3 class="headerwhite">Genres & Moods</h3>
+    <hr class="invisibleborder">
+    <div class="imgs2">
+        <img src="~/images/imgs/mood1.png" alt="">
+        <img src="~/images/imgs/mood2.png" alt="">
+        <img src="~/images/imgs/mood3.png" alt="">
+        <img src="~/images/imgs/mood4.png" alt="">
+        <img src="~/images/imgs/mood5.png" alt="">
+    </div>
+    <div class="imgs22">
+        <img src="~/images/imgs/mood6.png" alt="">
+        <img src="~/images/imgs/mood7.png" alt="">
+        <img src="~/images/imgs/mood8.png" alt="">
+        <img src="~/images/imgs/mood9.png" alt="">
+        <img src="~/images/imgs/mood10.png" alt="">
+    </div>
+</div>

@@ -1,0 +1,45 @@
+@{
+    ViewData["Title"] = "Spotify Sign Up";
+}
+@model SpotifyProject.Models.RegUser
+<head>
+    <link rel="stylesheet" href="~/css/loginsignup.css" />
+</head>
+<div class="brand">
+    <img src="~/images/spotify_white.png" alt="Spotify Logo">
+    <h1 class="brand">Spotify?</h1>
+</div>
+<br>
+<form asp-action="RegisterUser" asp-controller="User" method="post">
+
+    <span asp-validation-for="FullName" class="error"></span>
+    <br>
+    <input asp-for="FullName" class="form-control" placeholder="Full Name">
+
+    <span asp-validation-for="Email" class="error"></span>
+    <br>
+    <input asp-for="Email" class="form-control" type="email" placeholder="Email">
+
+    <span asp-validation-for="Username" class="error"></span>
+    <br>
+    <input asp-for="Username" class="form-control" placeholder="Username">
+
+    <span asp-validation-for="Birthdate" class="error"></span>
+    <label class="nope">Date of Birth:</label>
+    <input asp-for="Birthdate" class="form-control" type="date">
+
+    <span asp-validation-for="Password" class="error"></span>
+    <br>
+    <input asp-for="Password" class="form-control" placeholder="Password">
+
+    <span asp-validation-for="ConfirmPassword" class="error"></span>
+    <br>
+    <input asp-for="ConfirmPassword" class="form-control" placeholder="Confirm Password">
+    <br>
+
+    <p>By joining Spotify, you agree to sign over your soul to fight in Spotify's army in the war against the blasphemous <a href="https://www.apple.com/music/" target="_blank">Apple Music.</a></p>
+    <p>Also, privacy is but a myth in this modern age but please agree to our <a href="https://i.imgur.com/ZaN1uhJ.gif" target="_blank">privacy policy</a> anyway.</p>
+
+    <button class="btn btn-info">JOIN SPOTIFY</button>
+</form>
+<a href="/" class="logsign">LOGIN/SIGNUP</a>

@@ -1,0 +1,52 @@
+@{
+    ViewData["Title"] = "Spotify User Profile";
+}
+<head>
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+
+<div class="topnav container-fluid navbar-fixed-top">
+    <input type="search" class="search" placeholder="Search">
+    <a href="/logout" class="topnavright">Log Out&emsp;</a>
+    <a href="/userprofile/@ViewBag.UserId" class="topnavright">&nbsp;@ViewBag.Username&emsp;&emsp;</a>
+    <img src="~/images/profile.png" alt="Spotify Logo" class="profile">
+</div>
+<div class="sidenav">
+    <a href="/overview" class="sidebar">Browse</a>
+    <br>
+    <a href="#" class="sidebar">Radio</a>
+    <br>
+    <br>
+    <h5 class="sidelabel">YOUR LIBRARY</h5>
+    <a href="#" class="sidebar">Songs</a>
+    <br>
+    <a href="#" class="sidebar">Albums</a>
+    <br>
+    <a href="#" class="sidebar">Artists</a>
+    <br>
+    <a href="#" class="sidebar">Stations</a>
+    <br>
+    <a href="#" class="sidebar">Podcasts</a>
+    <br>
+    <br>
+    <h5 class="sidelabel">PLAYLISTS</h5>
+    <a href="#" class="sidebar">Dima</a>
+    <br>
+    <a href="#" class="sidebar">Vanessa</a>
+    <br>
+    <a href="#" class="sidebar">Chelsea</a>
+    <br>
+</div>
+<div class="row user-info-parent">
+    <div class="user-info">
+        <img src="~/images/profile2.png" alt="Spotify Logo" class="user-info-img">
+        <h1 class="user-info-username">@ViewBag.Username</h1>
+    </div>
+</div>
+<div class="spotify-user-body">
+    <hr class="invisibleborder">
+    <h1 class="header">PUT STUFF HERE!!!! MAYBRE RANDOM PLAYLISTS??</h1>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum dolor leo, rhoncus eu elit ac, varius semper lacus. Aliquam rhoncus arcu sit amet mauris ullamcorper, eu hendrerit lectus mollis. Suspendisse enim justo, iaculis id neque ac, sodales dapibus risus. Sed placerat consectetur ultrices. Ut laoreet venenatis nunc et rhoncus. Mauris tristique rutrum est, id faucibus justo. Donec volutpat semper massa id efficitur. Fusce vitae lacus et quam fermentum efficitur. Morbi vitae ex id felis dictum fringilla at in nunc. Praesent in diam posuere, consequat eros quis, porta urna. Nunc sagittis, nisl at venenatis mattis, sapien eros interdum quam, id tempus nisl quam at nisl. Aliquam risus est, feugiat vel condimentum ultrices, tincidunt eu purus.</p>
+</div>
+
+<br>

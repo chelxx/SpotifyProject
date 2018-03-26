@@ -1,0 +1,225 @@
+/* THESE ARE THE CSS STYLINGS FOR THE SPOTIFY WEB APP */
+body {
+    background-color: #181818;
+    margin-top: 10px;
+}
+* {
+    color: #B3B3B3;
+}
+a {
+    color: #B3B3B3;
+    text-decoration: none;
+    margin: 0px;
+}
+div.container.body-content {
+    margin-left: 200px;
+    width:1300px;
+}
+a:hover {
+    color: #55F03F;
+    text-decoration: none;
+}
+input.search {
+    border-radius: 12px;
+    border: none;
+    height: 20px;
+    padding: 5px;
+    color: black;
+    font-size: 12px;
+    width: 200px;
+}
+div.topnav {
+    background-color: #121212;
+    position: fixed;
+    padding: 10px;
+    padding-left: 200px;
+}
+.topnavright {
+    float: right;
+}
+div.spotify-body {
+    margin-left: 100px;
+}
+.sidenav {
+    height: 100%; /* Full-height: remove this if you want "auto" height */
+    width: 175px; /* Set the width of the sidebar */
+    position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+    z-index: 1; /* Stay on top */
+    top: 0; /* Stay at the top */
+    left: 0;
+    background-color: #121212;
+    overflow-x: scroll;
+    padding-top: 50px;
+    padding-left: 20px;
+}
+h5.sidelabel {
+    font-weight: 300;
+    letter-spacing: 2px;
+}
+h3.headerwhite {
+    color: white;
+}
+hr.invisibleborder {
+    border-color: #5B5B5B;
+}
+a.sidebar {
+    font-weight: 350;
+    font-size: 130%;
+}
+img.profile {
+    height: 20px;
+    float: right;
+}
+div.featuredalbum {
+    position: relative;
+}
+div.featuredalbumblur {
+    margin-left: 200px;
+    height: 200px;
+    width: 100%;
+    background-image: url("/images/kishi_albumcover.jpg");
+    -webkit-filter: blur(70px);
+    -o-filter: blur(70px);
+    filter: blur(70px);
+    position: absolute;
+}
+div.albumshow {
+    height: 200px;
+    position: absolute;
+}
+img.albumcover {
+    margin-top: 25px;
+    height: 200px;
+    margin-left: 600px; /* HARDCODED PLS FIX TO CENTER IT PROPERLY */
+    box-shadow: 3px 15px 15px #1f1f1f;
+}
+div.albuminfo {
+    width: 250px;
+    position: absolute;
+    margin-left: 815px; /* HARDCODED PLS FIX TO CENTER IT PROPERLY */
+    margin-top: 60px;
+}
+div.savebtn {
+    position: absolute; /* HARDCODED PLS FIX TO CENTER IT PROPERLY */
+    margin-top: 200px;
+    margin-left: 920px;
+}
+.header {
+    color: white;
+}
+.skinny {
+    font-weight: 300;
+    letter-spacing: 1px;
+    text-align: left;
+}
+button.btn.albumplaysong {
+    width: 100px;
+    height: 30px;
+    border-radius: 20px;
+    background-color: #57B65F;
+    border: none;
+}
+button.btn:hover {
+    background-color: #65D46E;
+    transform: scale(1.05);
+    border-radius: 30px;
+}
+button.savesong {
+    background: none;
+    width: 100px;
+    height: 30px;
+    border-radius: 20px;
+    border: 1px solid white;
+    color:white;
+}
+button.savesong:hover {
+    transform: scale(1.05);
+    border-radius: 30px;
+}
+div.spotify-body {
+    padding-top: 20px;
+    width: 1450px;
+    text-align: justify;
+    margin-top: 250px;
+}
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:hover, .nav-tabs>li.active>a:focus {
+    background: none;
+    border: none;
+    color: #55F03F;
+}
+.nav-tabs>li>a:hover {
+    background: none;
+    border: none;
+    color: white;
+    font-weight: bold;
+    text-decoration: underline 3px greenyellow;
+}
+.nav-tabs {
+    border-bottom: 0px;
+}
+.nav-tabs li.active {
+    border-bottom: 4px solid #55F03F;
+}
+div.tabcontent {
+    margin-left: 100px;
+    width: 1450px;
+}
+.imgs {
+    display: flex;
+    padding: 0 -8px;
+}
+.imgs img {
+    display: block;
+    margin: auto;
+    height: 335px;
+}
+.imgs2 {
+    display: flex;
+    padding: 0 10px;
+}
+.imgs2 img {
+    display: inline-block;
+    margin: auto;
+    height: 260px;
+    padding: 10px;
+}
+.imgs22 {
+    display: flex;
+    margin: 0 10px;
+}
+.imgs22 img {
+    display: inline-block;
+    margin: auto;
+    height: 260px;
+    padding: 10px;
+}
+div.user-info {
+    margin-top: 30px;
+}
+h1.user-info-username {
+    font-weight: bold;
+    font-size: 4em;
+    color: white;
+}
+h4.user-info-name {
+    font-weight: 300;
+    color: white;
+}
+div.user-info img {
+    float: left;
+    width: 100px;
+    margin: 10px 0 0 100px;
+}
+div.user-info h1{
+    float: left;
+    margin: 25px 0 0 20px;
+}
+div.user-info-parent {
+    margin-top: 60px;
+}
+div.spotify-user-body {
+    margin-top: 20px;
+    margin-left: 100px;
+    width: 1400px;
+    text-align: justify;
+}
