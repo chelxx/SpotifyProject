@@ -17,3 +17,9 @@
 <form action="/login">
     <button class="btn btn-info">LOG IN</button>
 </form>
+@{
+    if(TempData["NobodyThere"] != null)
+    {
+        <p style="color: tomato">@TempData["NobodyThere"]</p>
+    }
+}

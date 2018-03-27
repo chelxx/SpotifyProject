@@ -23,175 +23,318 @@ namespace SpotifyProject.Controllers
         [Route("overview")]
         public IActionResult Overview()
         {
-            ViewBag.UserId = HttpContext.Session.GetInt32("userID");
-            ViewBag.FullName = HttpContext.Session.GetString("fullname");
-            ViewBag.Username = HttpContext.Session.GetString("username");
+            int? UserId = HttpContext.Session.GetInt32("userID");
+            if (UserId == null)
+            {
+                TempData["NobodyThere"] = "You must be logged in first!";
+                return RedirectToAction("Index", "User");
+            }
+            else
+            {
+                ViewBag.UserId = HttpContext.Session.GetInt32("userID");
+                ViewBag.FullName = HttpContext.Session.GetString("fullname");
+                ViewBag.Username = HttpContext.Session.GetString("username");
 
-            int? userid = HttpContext.Session.GetInt32("userID");
-            List<Playlist> myplaylists = _context.Playlists.Where(u => u.UserId == userid).ToList();
-            ViewBag.MyPlaylists = myplaylists;
+                int? userid = HttpContext.Session.GetInt32("userID");
+                List<Playlist> myplaylists = _context.Playlists.Where(u => u.UserId == userid).ToList();
+                ViewBag.MyPlaylists = myplaylists;
 
-            return View("Overview");
+                return View("Overview");
+            }
         }
 
         [HttpGet]
         [Route("podcasts")]
         public IActionResult Podcasts()
         {
-            ViewBag.UserId = HttpContext.Session.GetInt32("userID");
-            ViewBag.FullName = HttpContext.Session.GetString("fullname");
-            ViewBag.Username = HttpContext.Session.GetString("username");
+            int? UserId = HttpContext.Session.GetInt32("userID");
+            if (UserId == null)
+            {
+                TempData["NobodyThere"] = "You must be logged in first!";
+                return RedirectToAction("Index", "User");
+            }
+            else
+            {
+                ViewBag.UserId = HttpContext.Session.GetInt32("userID");
+                ViewBag.FullName = HttpContext.Session.GetString("fullname");
+                ViewBag.Username = HttpContext.Session.GetString("username");
 
-            int? userid = HttpContext.Session.GetInt32("userID");
-            List<Playlist> myplaylists = _context.Playlists.Where(u => u.UserId == userid).ToList();
-            ViewBag.MyPlaylists = myplaylists;
+                int? userid = HttpContext.Session.GetInt32("userID");
+                List<Playlist> myplaylists = _context.Playlists.Where(u => u.UserId == userid).ToList();
+                ViewBag.MyPlaylists = myplaylists;
 
-            return View("Podcasts");
+                return View("Podcasts");
+            }
         }
 
         [HttpGet]
         [Route("concerts")]
         public IActionResult Concerts()
         {
-            ViewBag.UserId = HttpContext.Session.GetInt32("userID");
-            ViewBag.FullName = HttpContext.Session.GetString("fullname");
-            ViewBag.Username = HttpContext.Session.GetString("username");
+            int? UserId = HttpContext.Session.GetInt32("userID");
+            if (UserId == null)
+            {
+                TempData["NobodyThere"] = "You must be logged in first!";
+                return RedirectToAction("Index", "User");
+            }
+            else
+            {
+                ViewBag.UserId = HttpContext.Session.GetInt32("userID");
+                ViewBag.FullName = HttpContext.Session.GetString("fullname");
+                ViewBag.Username = HttpContext.Session.GetString("username");
 
-            int? userid = HttpContext.Session.GetInt32("userID");
-            List<Playlist> myplaylists = _context.Playlists.Where(u => u.UserId == userid).ToList();
-            ViewBag.MyPlaylists = myplaylists;
+                int? userid = HttpContext.Session.GetInt32("userID");
+                List<Playlist> myplaylists = _context.Playlists.Where(u => u.UserId == userid).ToList();
+                ViewBag.MyPlaylists = myplaylists;
 
-            return View("Concerts");
+                return View("Concerts");
+            }
         }
 
         [HttpGet]
         [Route("charts")]
         public IActionResult Charts()
         {
-            ViewBag.UserId = HttpContext.Session.GetInt32("userID");
-            ViewBag.FullName = HttpContext.Session.GetString("fullname");
-            ViewBag.Username = HttpContext.Session.GetString("username");
+            int? UserId = HttpContext.Session.GetInt32("userID");
+            if (UserId == null)
+            {
+                TempData["NobodyThere"] = "You must be logged in first!";
+                return RedirectToAction("Index", "User");
+            }
+            else
+            {
+                ViewBag.UserId = HttpContext.Session.GetInt32("userID");
+                ViewBag.FullName = HttpContext.Session.GetString("fullname");
+                ViewBag.Username = HttpContext.Session.GetString("username");
 
-            int? userid = HttpContext.Session.GetInt32("userID");
-            List<Playlist> myplaylists = _context.Playlists.Where(u => u.UserId == userid).ToList();
-            ViewBag.MyPlaylists = myplaylists;
+                int? userid = HttpContext.Session.GetInt32("userID");
+                List<Playlist> myplaylists = _context.Playlists.Where(u => u.UserId == userid).ToList();
+                ViewBag.MyPlaylists = myplaylists;
 
-            return View("Charts");
+                return View("Charts");
+            }
         }
 
         [HttpGet]
         [Route("genremood")]
         public IActionResult GenreMood()
         {
-            ViewBag.UserId = HttpContext.Session.GetInt32("userID");
-            ViewBag.FullName = HttpContext.Session.GetString("fullname");
-            ViewBag.Username = HttpContext.Session.GetString("username");
+            int? UserId = HttpContext.Session.GetInt32("userID");
+            if (UserId == null)
+            {
+                TempData["NobodyThere"] = "You must be logged in first!";
+                return RedirectToAction("Index", "User");
+            }
+            else
+            {
+                ViewBag.UserId = HttpContext.Session.GetInt32("userID");
+                ViewBag.FullName = HttpContext.Session.GetString("fullname");
+                ViewBag.Username = HttpContext.Session.GetString("username");
 
-            int? userid = HttpContext.Session.GetInt32("userID");
-            List<Playlist> myplaylists = _context.Playlists.Where(u => u.UserId == userid).ToList();
-            ViewBag.MyPlaylists = myplaylists;
+                int? userid = HttpContext.Session.GetInt32("userID");
+                List<Playlist> myplaylists = _context.Playlists.Where(u => u.UserId == userid).ToList();
+                ViewBag.MyPlaylists = myplaylists;
 
-            return View("GenreMood");
+                return View("GenreMood");
+            }
         }
 
         [HttpGet]
         [Route("userprofile/{id}")]
         public IActionResult UserProfile(int id)
         {
-            ViewBag.UserId = HttpContext.Session.GetInt32("userID");
-            ViewBag.FullName = HttpContext.Session.GetString("fullname");
-            ViewBag.Username = HttpContext.Session.GetString("username");
+            int? UserId = HttpContext.Session.GetInt32("userID");
+            if (UserId == null)
+            {
+                TempData["NobodyThere"] = "You must be logged in first!";
+                return RedirectToAction("Index", "User");
+            }
+            else
+            {
+                ViewBag.UserId = HttpContext.Session.GetInt32("userID");
+                ViewBag.FullName = HttpContext.Session.GetString("fullname");
+                ViewBag.Username = HttpContext.Session.GetString("username");
 
-            int? userid = HttpContext.Session.GetInt32("userID");
-            List<Playlist> myplaylists = _context.Playlists.Where(u => u.UserId == userid).ToList();
-            ViewBag.MyPlaylists = myplaylists;
+                int? userid = HttpContext.Session.GetInt32("userID");
+                List<Playlist> myplaylists = _context.Playlists.Where(u => u.UserId == userid).ToList();
+                ViewBag.MyPlaylists = myplaylists;
 
-            return View("UserProfile");
+                return View("UserProfile");
+            }
         }
 
         [HttpGet]
         [Route("songs/{id}")]
         public IActionResult Songs(int id)
         {
-            ViewBag.UserId = HttpContext.Session.GetInt32("userID");
-            ViewBag.FullName = HttpContext.Session.GetString("fullname");
-            ViewBag.Username = HttpContext.Session.GetString("username");
+            int? UserId = HttpContext.Session.GetInt32("userID");
+            if (UserId == null)
+            {
+                TempData["NobodyThere"] = "You must be logged in first!";
+                return RedirectToAction("Index", "User");
+            }
+            else
+            {
+                ViewBag.UserId = HttpContext.Session.GetInt32("userID");
+                ViewBag.FullName = HttpContext.Session.GetString("fullname");
+                ViewBag.Username = HttpContext.Session.GetString("username");
 
-            int? userid = HttpContext.Session.GetInt32("userID");
-            List<Playlist> myplaylists = _context.Playlists.Where(u => u.UserId == userid).ToList();
-            ViewBag.MyPlaylists = myplaylists;
+                int? userid = HttpContext.Session.GetInt32("userID");
+                List<Playlist> myplaylists = _context.Playlists.Where(u => u.UserId == userid).ToList();
+                ViewBag.MyPlaylists = myplaylists;
 
-            return View("Songs");
+                return View("Songs");
+            }
         }
 
         [HttpGet]
         [Route("playlist/{id}")]
         public IActionResult Playlist(int id)
         {
-            ViewBag.UserId = HttpContext.Session.GetInt32("userID");
-            ViewBag.FullName = HttpContext.Session.GetString("fullname");
-            ViewBag.Username = HttpContext.Session.GetString("username");
+            int? UserId = HttpContext.Session.GetInt32("userID");
+            if (UserId == null)
+            {
+                TempData["NobodyThere"] = "You must be logged in first!";
+                return RedirectToAction("Index", "User");
+            }
+            else
+            {
+                ViewBag.UserId = HttpContext.Session.GetInt32("userID");
+                ViewBag.FullName = HttpContext.Session.GetString("fullname");
+                ViewBag.Username = HttpContext.Session.GetString("username");
 
-            int? userid = HttpContext.Session.GetInt32("userID");
-            List<Playlist> myplaylists = _context.Playlists.Where(u => u.UserId == userid).ToList();
-            ViewBag.MyPlaylists = myplaylists;
-            
-            Playlist thisplaylist = _context.Playlists.Where(p => p.PlaylistId == id).SingleOrDefault();
-            ViewBag.ThisPlaylist = thisplaylist;
+                int? userid = HttpContext.Session.GetInt32("userID");
+                List<Playlist> myplaylists = _context.Playlists.Where(u => u.UserId == userid).ToList();
+                ViewBag.MyPlaylists = myplaylists;
+                
+                Playlist thisplaylist = _context.Playlists.Where(p => p.PlaylistId == id).SingleOrDefault();
+                ViewBag.ThisPlaylist = thisplaylist;
 
-            return View("Playlists");
+                return View("Playlists");
+            }
         }
 
         [HttpGet]
         [Route("artists")]
         public IActionResult AllArtists(int id)
         {
-            ViewBag.UserId = HttpContext.Session.GetInt32("userID");
-            ViewBag.FullName = HttpContext.Session.GetString("fullname");
-            ViewBag.Username = HttpContext.Session.GetString("username");
+            int? UserId = HttpContext.Session.GetInt32("userID");
+            if (UserId == null)
+            {
+                TempData["NobodyThere"] = "You must be logged in first!";
+                return RedirectToAction("Index", "User");
+            }
+            else
+            {
+                ViewBag.UserId = HttpContext.Session.GetInt32("userID");
+                ViewBag.FullName = HttpContext.Session.GetString("fullname");
+                ViewBag.Username = HttpContext.Session.GetString("username");
 
-            int? userid = HttpContext.Session.GetInt32("userID");
-            List<Playlist> myplaylists = _context.Playlists.Where(u => u.UserId == userid).ToList();
-            ViewBag.MyPlaylists = myplaylists;
+                int? userid = HttpContext.Session.GetInt32("userID");
+                List<Playlist> myplaylists = _context.Playlists.Where(u => u.UserId == userid).ToList();
+                ViewBag.MyPlaylists = myplaylists;
 
-            return View("AllArtists");
+                return View("AllArtists");
+            }
         }
 
         [HttpGet]
         [Route("albums")]
         public IActionResult AllAlbums(int id)
         {
-            ViewBag.UserId = HttpContext.Session.GetInt32("userID");
-            ViewBag.FullName = HttpContext.Session.GetString("fullname");
-            ViewBag.Username = HttpContext.Session.GetString("username");
+            int? UserId = HttpContext.Session.GetInt32("userID");
+            if (UserId == null)
+            {
+                TempData["NobodyThere"] = "You must be logged in first!";
+                return RedirectToAction("Index", "User");
+            }
+            else
+            {
+                ViewBag.UserId = HttpContext.Session.GetInt32("userID");
+                ViewBag.FullName = HttpContext.Session.GetString("fullname");
+                ViewBag.Username = HttpContext.Session.GetString("username");
 
-            int? userid = HttpContext.Session.GetInt32("userID");
-            List<Playlist> myplaylists = _context.Playlists.Where(u => u.UserId == userid).ToList();
-            ViewBag.MyPlaylists = myplaylists;
+                int? userid = HttpContext.Session.GetInt32("userID");
+                List<Playlist> myplaylists = _context.Playlists.Where(u => u.UserId == userid).ToList();
+                ViewBag.MyPlaylists = myplaylists;
 
-            return View("AllAlbums");
+                return View("AllAlbums");
+            }
+        }
+
+        [HttpGet]
+        [Route("recentlyplayed")]
+        public IActionResult RecentlyPlayed()
+        {
+            int? UserId = HttpContext.Session.GetInt32("userID");
+            if (UserId == null)
+            {
+                TempData["NobodyThere"] = "You must be logged in first!";
+                return RedirectToAction("Index", "User");
+            }
+            else
+            {
+                ViewBag.UserId = HttpContext.Session.GetInt32("userID");
+                ViewBag.FullName = HttpContext.Session.GetString("fullname");
+                ViewBag.Username = HttpContext.Session.GetString("username");
+
+                int? userid = HttpContext.Session.GetInt32("userID");
+                List<Playlist> myplaylists = _context.Playlists.Where(u => u.UserId == userid).ToList();
+                ViewBag.MyPlaylists = myplaylists;
+
+                return View("RecentlyPlayed");
+            }
         }
 
         [HttpPost]
         [Route("addplaylist")]
-        public IActionResult AddPlaylist(Playlist newPlaylist)
+        public IActionResult AddPlaylistTitle(Playlist newPlaylist)
         {
-            if (ModelState.IsValid)
+            int? UserId = HttpContext.Session.GetInt32("userID");
+            if (UserId == null)
             {
-                int? id = HttpContext.Session.GetInt32("userID");
-                Playlist playlist = new Playlist
-                {
-                    UserId = (int)id,
-                    PlaylistTitle = newPlaylist.PlaylistTitle,
-                };
-                _context.Add(playlist);
-                _context.SaveChanges();
-                return RedirectToAction("Overview", "Spotify");
+                TempData["NobodyThere"] = "You must be logged in first!";
+                return RedirectToAction("Index", "User");
             }
             else
             {
-                return View("Overview");
+                if (ModelState.IsValid)
+                {
+                    int? id = HttpContext.Session.GetInt32("userID");
+                    Playlist playlist = new Playlist
+                    {
+                        UserId = (int)id,
+                        PlaylistTitle = newPlaylist.PlaylistTitle,
+                    };
+                    _context.Add(playlist);
+                    _context.SaveChanges();
+                    return RedirectToAction("Overview", "Spotify");
+                }
+                else
+                {
+                    return View("Overview");
+                }
             }
         }
+
+        [HttpPost]
+        [Route("delete/{id}")]
+        public IActionResult DeletePlaylist(int id)
+        {
+            Playlist playlist = _context.Playlists.SingleOrDefault(w => w.PlaylistId == id);
+            _context.Remove(playlist);
+            _context.SaveChanges();
+            return RedirectToAction("Overview", "Spotify");
+        }
+
+        // [HttpPost]
+        // [Route("removesong/{id}")]
+        // public IActionResult RemoveSongFromPlaylist(int id)
+        // {
+        //     QUERY TO GET THE SPECIFIC SONG TO REMOVE FROM THE PLAYLIST
+        //     _context.Remove(songinplaylist);
+        //     _context.SaveChanges();
+        //     return RedirectToAction("Playlist", "Spotify");
+        // }
     }
 }

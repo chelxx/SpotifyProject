@@ -7,7 +7,7 @@
 </head>
 
 <div class="topnav container-fluid navbar-fixed-top">
-    <input type="search" class="search" placeholder="Search">
+    <input type="search" class="search" placeholder="Search" id="search">
     <a href="/logout" class="topnavright">Log Out&emsp;</a>
     <a href="/userprofile/@ViewBag.UserId" class="topnavright">&nbsp;@ViewBag.Username&emsp;&emsp;</a>
     <img src="~/images/profile.png" alt="Spotify Logo" class="profile">
@@ -23,7 +23,7 @@
     <br>
     <a href="/artists" class="sidebar">Artists</a>
     <br>
-    <a href="#" class="sidebar">Recently Played</a>
+    <a href="/recentlyplayed" class="sidebar">Recently Played</a>
     <br>
     <br>
     <h5 class="sidelabel">PLAYLISTS</h5>

@@ -7,7 +7,8 @@
 </head>
 
 <div class="topnav container-fluid navbar-fixed-top">
-    <input type="search" class="search" placeholder="Search">
+    <span class="glyphicon glyphicon-search" aria-hidden="true" style="height: 30px;"></span>
+    <input type="search" class="search" placeholder="Search" id="search">
     <a href="/logout" class="topnavright">Log Out&emsp;</a>
     <a href="/userprofile/@ViewBag.UserId" class="topnavright">&nbsp;@ViewBag.Username&emsp;&emsp;</a>
     <img src="~/images/profile.png" alt="Spotify Logo" class="profile">
@@ -23,7 +24,7 @@
     <br>
     <a href="/artists" class="sidebar">Artists</a>
     <br>
-    <a href="#" class="sidebar">Recently Played</a>
+    <a href="/recentlyplayed" class="sidebar">Recently Played</a>
     <br>
     <br>
     <h5 class="sidelabel">PLAYLISTS</h5>
@@ -70,6 +71,7 @@
                 <th class="sidelabel">TITLE</th>
                 <th class="sidelabel">ARTIST</th>
                 <th class="sidelabel">ALBUM</th>
+                <th class="sidelabel">ACTION</th>
             </tr>
         </thead>
         <tbody>
@@ -78,24 +80,31 @@
                 <td><a href="">Song Name</a></td>
                 <td><a href="">Artist Name</a></td>
                 <td><a href="">Album Name</a></td>
+                <td><a href="/removesong/SONG_ID_HERE">Remove From @ViewBag.ThisPlaylist.PlaylistTitle</a></td>
             </tr>
             <tr>
                 <td><a href="">Song Name</a></td>
                 <td><a href="">Artist Name</a></td>
                 <td><a href="">Album Name</a></td>
+                <td><a href="/removesong/SONG_ID_HERE">Remove From @ViewBag.ThisPlaylist.PlaylistTitle</a></td>
             </tr>
             <tr>
                 <td><a href="">Song Name</a></td>
                 <td><a href="">Artist Name</a></td>
                 <td><a href="">Album Name</a></td>
+                <td><a href="/removesong/SONG_ID_HERE">Remove From @ViewBag.ThisPlaylist.PlaylistTitle</a></td>
             </tr>
             <tr>
                 <td><a href="">Song Name</a></td>
                 <td><a href="">Artist Name</a></td>
                 <td><a href="">Album Name</a></td>
+                <td><a href="/removesong/SONG_ID_HERE">Remove From @ViewBag.ThisPlaylist.PlaylistTitle</a></td>
             </tr>
 <!-- END HARDCODE! FIX! -->
         </tbody>
     </table>
+    <form action="/delete/@ViewBag.ThisPlaylist.PlaylistId" method="post">
+        <button class="addplaylist delete btn btn-info">DELETE PLAYLIST</button>
+    </form>
 </div>
 <br>

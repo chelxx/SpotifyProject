@@ -1,7 +1,9 @@
 /* THESE ARE THE CSS STYLINGS FOR THE SPOTIFY WEB APP */
-body {
-    background-color: #181818;
+html, body {
+    /* background-color: #181818; */
+    background: linear-gradient(rgb(50, 50, 50), #131313);
     margin-top: 10px;
+    height: 100%;
 }
 * {
     color: #B3B3B3;
@@ -239,15 +241,6 @@ div.spotify-songs-body {
 td a{
     color: white;
 }
-
-
-
-
-
-
-
-
-
 /* The Modal (background) */
 .modal {
     display: none; /* Hidden by default */
@@ -294,9 +287,6 @@ button.addplaylist:hover {
     border-radius: 10px;
     border: none;
 }
-
-
-
 a img.artistpage {
     border-radius: 50%;
     height: 250px;
@@ -304,6 +294,12 @@ a img.artistpage {
     padding: 0px;
     margin: 10px;
 }
- .play {
-     color: #57B65F;
- }
+.play {
+    color: #57B65F;
+}
+.glyphicon.glyphicon-search {
+    font-size: 20px;
+}
+button.delete:hover {
+    background-color: tomato;
+}
