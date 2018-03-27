@@ -8,5 +8,6 @@ namespace SpotifyProject.Models
         // base() calls the parent class' constructor passing the "options" parameter along
         public SpotifyContext(DbContextOptions<SpotifyContext> options) : base(options) { }
         public DbSet<User> Users { get;set; }
+        public DbSet<Playlist> Playlists { get;set; }
     }
 }

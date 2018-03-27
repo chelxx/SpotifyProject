@@ -1,6 +1,7 @@
 @{
     ViewData["Title"] = "Spotify Dashboard";
 }
+@model SpotifyProject.Models.PlaylistValidation
 <head>
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
@@ -14,8 +15,6 @@
 <div class="sidenav">
     <a href="/overview" class="sidebar">Browse</a>
     <br>
-    <a href="#" class="sidebar">Radio</a>
-    <br>
     <br>
     <h5 class="sidelabel">YOUR LIBRARY</h5>
     <a href="/songs/@ViewBag.UserId" class="sidebar">Songs</a>
@@ -23,8 +22,6 @@
     <a href="#" class="sidebar">Albums</a>
     <br>
     <a href="#" class="sidebar">Artists</a>
-    <br>
-    <a href="#" class="sidebar">Podcasts</a>
     <br>
     <a href="#" class="sidebar">Recently Played</a>
     <br>
@@ -36,6 +33,25 @@
     <br>
     <a href="#" class="sidebar">Chelsea</a>
     <br>
+    <br>
+
+    <!-- Trigger/Open The Modal -->
+    <button id="myBtn" class="addplaylist btn-info">+ NEW PLAYLIST</button>
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content" style="background: #1f1f1f; width: 550px; height: 110px; border: 2px solid #57B65F;">
+            <span class="close">&times;</span>
+            <form asp-action="AddPlaylist" asp-controller="Spotify" method="post">
+                <span asp-validation-for="PlaylistTitle" class="error"></span>
+                <br>
+                <input asp-for="PlaylistTitle" placeholder="Playlist Title" style="height: 30px; width: 305px; border-radius: 20px; padding-left: 20px; color: black;">
+                <button class="btn btn-info addplaylist" style="width: 150px; border-radius: 20px; margin-left: 20px;">ADD</button>
+            </form>
+        </div>
+    </div>
+    <!-- End of Modal -->
+
 </div>
 <br>
 <div class="featuredalbum">
@@ -61,7 +77,6 @@
 <div class="spotify-body">
     <ul class="nav nav-tabs">
     <li class="active"><a href="#">OVERVIEW</a></li>
-    <li><a href="/podcasts">PODCASTS</a></li>
     <li><a href="/concerts">CONCERTS</a></li>
     <li><a href="/charts">CHARTS</a></li>
     <li><a href="/genremood">GENRES & MOODS</a></li>

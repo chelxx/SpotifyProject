@@ -13,10 +13,17 @@ namespace SpotifyProject.Controllers
 {
     public class SpotifyController : Controller
     {
+        private SpotifyContext _context;
+ 
+        public SpotifyController(SpotifyContext context)
+        {
+            _context = context;
+        }
         [HttpGet]
         [Route("overview")]
         public IActionResult Overview()
         {
+
             ViewBag.UserId = HttpContext.Session.GetInt32("userID");
             ViewBag.FullName = HttpContext.Session.GetString("fullname");
             ViewBag.Username = HttpContext.Session.GetString("username");
@@ -81,6 +88,27 @@ namespace SpotifyProject.Controllers
             ViewBag.FullName = HttpContext.Session.GetString("fullname");
             ViewBag.Username = HttpContext.Session.GetString("username");
             return View("UserSongs");
+        }
+        [HttpPost]
+        [Route("addplaylist")]
+        public IActionResult AddPlaylist(Playlist newPlaylist)
+        {
+            if (ModelState.IsValid)
+            {
+                int? id = HttpContext.Session.GetInt32("userID");
+                Playlist playlist = new Playlist
+                {
+                    UserId = (int)id,
+                    PlaylistTitle = newPlaylist.PlaylistTitle,
+                };
+                _context.Add(playlist);
+                _context.SaveChanges();
+                return RedirectToAction("Overview", "Spotify");
+            }
+            else
+            {
+                return View("Overview");
+            }
         }
     }
 }

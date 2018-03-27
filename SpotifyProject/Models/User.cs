@@ -12,6 +12,10 @@ namespace SpotifyProject.Models
         public string Username { get;set; }
         public DateTime Birthdate { get;set; }
         public string Password { get; set; }
-
+        public List<Playlist> Playlists { get; set; }
+        public User()
+        {
+            Playlists = new List<Playlist>();
+        }
     }
 }

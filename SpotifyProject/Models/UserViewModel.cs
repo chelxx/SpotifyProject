@@ -53,4 +53,14 @@ namespace SpotifyProject.Models
         [DataType(DataType.Password)]
         public string Password { get;set; }
     }
+    public class PlaylistValidation : BaseEntity
+    {
+        [Key]
+        public int PlaylistId { get; set; }
+
+        [Required]
+        [MinLength(2, ErrorMessage="Playlist Title must be at least 2 characters!")]
+        [RegularExpression(@"^[a-zA-Z\s]*$", ErrorMessage="Playlist Title can only contain letters!")]
+        public string PlaylistTitle { get;set; }
+    }
 }
