@@ -294,3 +294,16 @@ button.addplaylist:hover {
     border-radius: 10px;
     border: none;
 }
+
+
+
+a img.artistpage {
+    border-radius: 50%;
+    height: 250px;
+    border: 6px groove #57B65F;
+    padding: 0px;
+    margin: 10px;
+}
+ .play {
+     color: #57B65F;
+ }

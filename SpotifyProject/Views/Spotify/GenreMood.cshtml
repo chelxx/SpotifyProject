@@ -1,6 +1,7 @@
 @{
     ViewData["Title"] = "Spotify Dashboard";
 }
+@model SpotifyProject.Models.PlaylistValidation
 <head>
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
@@ -18,22 +19,23 @@
     <h5 class="sidelabel">YOUR LIBRARY</h5>
     <a href="/songs/@ViewBag.UserId" class="sidebar">Songs</a>
     <br>
-    <a href="#" class="sidebar">Albums</a>
+    <a href="/albums" class="sidebar">Albums</a>
     <br>
-    <a href="#" class="sidebar">Artists</a>
+    <a href="/artists" class="sidebar">Artists</a>
     <br>
     <a href="#" class="sidebar">Recently Played</a>
     <br>
     <br>
     <h5 class="sidelabel">PLAYLISTS</h5>
-    <a href="#" class="sidebar">Dima</a>
+    @{
+        @foreach(var playlist in ViewBag.MyPlaylists)
+        {
+            <a href="/playlist/@playlist.PlaylistId" class="sidebar">@playlist.PlaylistTitle</a>
+            <br>
+        }
+    }
     <br>
-    <a href="#" class="sidebar">Vanessa</a>
     <br>
-    <a href="#" class="sidebar">Chelsea</a>
-    <br>
-    <br>
-
     <!-- Trigger/Open The Modal -->
     <button id="myBtn" class="addplaylist btn-info">+ NEW PLAYLIST</button>
     <!-- The Modal -->

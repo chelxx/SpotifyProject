@@ -1,6 +1,7 @@
 @{
     ViewData["Title"] = "Spotify Dashboard";
 }
+@model SpotifyProject.Models.PlaylistValidation
 <head>
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
@@ -18,21 +19,21 @@
     <h5 class="sidelabel">YOUR LIBRARY</h5>
     <a href="/songs/@ViewBag.UserId" class="sidebar">Songs</a>
     <br>
-    <a href="#" class="sidebar">Albums</a>
+    <a href="/albums" class="sidebar">Albums</a>
     <br>
-    <a href="#" class="sidebar">Artists</a>
+    <a href="/artists" class="sidebar">Artists</a>
     <br>
     <a href="#" class="sidebar">Recently Played</a>
     <br>
     <br>
     <h5 class="sidelabel">PLAYLISTS</h5>
-    <a href="#" class="sidebar">Dima</a>
-    <br>
-    <a href="#" class="sidebar">Vanessa</a>
-    <br>
-    <a href="#" class="sidebar">Chelsea</a>
-    <br>
-    <a href="#" class="sidebar">Chelsea</a>
+    @{
+        @foreach(var playlist in ViewBag.MyPlaylists)
+        {
+            <a href="/playlist/@playlist.PlaylistId" class="sidebar">@playlist.PlaylistTitle</a>
+            <br>
+        }
+    }
     <br>
     <br>
 
@@ -87,8 +88,8 @@
 <!-- THIS IS THE LIMIT -->
 
 <div id="charts" class="tabcontent">
-    <h1>CHARTS</h1>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum dolor leo, rhoncus eu elit ac, varius semper lacus. Aliquam rhoncus arcu sit amet mauris ullamcorper, eu hendrerit lectus mollis. Suspendisse enim justo, iaculis id neque ac, sodales dapibus risus. Sed placerat consectetur ultrices. Ut laoreet venenatis nunc et rhoncus. Mauris tristique rutrum est, id faucibus justo. Donec volutpat semper massa id efficitur. Fusce vitae lacus et quam fermentum efficitur. Morbi vitae ex id felis dictum fringilla at in nunc. Praesent in diam posuere, consequat eros quis, porta urna. Nunc sagittis, nisl at venenatis mattis, sapien eros interdum quam, id tempus nisl quam at nisl. Aliquam risus est, feugiat vel condimentum ultrices, tincidunt eu purus.</p>
+    <h3 class="headerwhite">Featured Charts</h3>
+    <hr class="invisibleborder">    
     <div class="imgs">
         <img src="~/images/imgs/cat2.png" alt="">
         <img src="~/images/imgs/pup2.png" alt="">

@@ -1,5 +1,5 @@
 @{
-    ViewData["Title"] = "Spotify Dashboard";
+    ViewData["Title"] = "Spotify Artists";
 }
 @model SpotifyProject.Models.PlaylistValidation
 <head>
@@ -53,47 +53,25 @@
         </div>
     </div>
     <!-- End of Modal -->
-    
-</div>
-<br>
-<div class="featuredalbum">
-    <div class="featuredalbumblur"></div>
-    <div class="albumshow">
-        <img src="~/images/kishi_albumcover.jpg" alt="Kishi Bashi" class="albumcover">
-    </div>
-    <div class="albuminfo">
-        <h3 class="header">151a</h3>
-        <h6 class="header skinny">Kishi Bashi</h6>
-        <h6 class="header skinny">In 2014 Kishi Bashi released his own line of coffee through Jittery Joe's called Royal Daark Blend. Each purchase comes with an exclusive song download.</h6>
-        <form action="#">
-            <button class="btn btn-info albumplaysong">PLAY</button>
-        </form>
-    </div>
-    <div class="savebtn">
-        <form action="#">
-            <button class="savesong">SAVE</button>
-        </form>
-    </div>
 </div>
 
-<div class="spotify-body">
-    <ul class="nav nav-tabs">
-    <li><a href="/overview">OVERVIEW</a></li>
-    <li class="active"><a href="#">CONCERTS</a></li>
-    <li><a href="/charts">CHARTS</a></li>
-    <li><a href="/genremood">GENRES & MOODS</a></li>
-    </ul>
-</div>
-
-<!-- THIS IS THE LIMIT -->
-
-<div id="concerts" class="tabcontent">
-    <h3 class="headerwhite">Chicago</h3>
+<div class="spotify-songs-body">
+    <h1 class="header play">Artists</h1>
     <hr class="invisibleborder">
-    <div class="imgs">
-        <img src="~/images/imgs/cat3.png" alt="">
-        <img src="~/images/imgs/pup3.png" alt="">
-        <img src="~/images/imgs/ham3.png" alt="">
-        <img src="~/images/imgs/otter3.png" alt="">
+    <div class="imgs2">
+        <a href=""><img src="~/images/imgs/ham1.png" alt="" class="artistpage"></a>
+        <a href=""><img src="~/images/imgs/ham2.png" alt="" class="artistpage"></a>
+        <a href=""><img src="~/images/imgs/ham5.png" alt="" class="artistpage"></a>
+        <a href=""><img src="~/images/imgs/ham3.png" alt="" class="artistpage"></a>
+        <a href=""><img src="~/images/imgs/cat1.png" alt="" class="artistpage"></a>
     </div>
+    <br>
+    <div class="imgs2">
+        <a href=""><img src="~/images/imgs/otter1.png" alt="" class="artistpage"></a>
+        <a href=""><img src="~/images/imgs/otter2.png" alt="" class="artistpage"></a>
+        <a href=""><img src="~/images/imgs/otter3.png" alt="" class="artistpage"></a>
+        <a href=""><img src="~/images/imgs/otter4.png" alt="" class="artistpage"></a>
+        <a href=""><img src="~/images/imgs/otter5.png" alt="" class="artistpage"></a>
+    </div>
+    <br>
 </div>

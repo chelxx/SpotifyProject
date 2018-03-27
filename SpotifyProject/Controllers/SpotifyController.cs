@@ -23,10 +23,14 @@ namespace SpotifyProject.Controllers
         [Route("overview")]
         public IActionResult Overview()
         {
-
             ViewBag.UserId = HttpContext.Session.GetInt32("userID");
             ViewBag.FullName = HttpContext.Session.GetString("fullname");
             ViewBag.Username = HttpContext.Session.GetString("username");
+
+            int? userid = HttpContext.Session.GetInt32("userID");
+            List<Playlist> myplaylists = _context.Playlists.Where(u => u.UserId == userid).ToList();
+            ViewBag.MyPlaylists = myplaylists;
+
             return View("Overview");
         }
 
@@ -36,7 +40,12 @@ namespace SpotifyProject.Controllers
         {
             ViewBag.UserId = HttpContext.Session.GetInt32("userID");
             ViewBag.FullName = HttpContext.Session.GetString("fullname");
-            ViewBag.Username = HttpContext.Session.GetString("username");   
+            ViewBag.Username = HttpContext.Session.GetString("username");
+
+            int? userid = HttpContext.Session.GetInt32("userID");
+            List<Playlist> myplaylists = _context.Playlists.Where(u => u.UserId == userid).ToList();
+            ViewBag.MyPlaylists = myplaylists;
+
             return View("Podcasts");
         }
 
@@ -47,6 +56,11 @@ namespace SpotifyProject.Controllers
             ViewBag.UserId = HttpContext.Session.GetInt32("userID");
             ViewBag.FullName = HttpContext.Session.GetString("fullname");
             ViewBag.Username = HttpContext.Session.GetString("username");
+
+            int? userid = HttpContext.Session.GetInt32("userID");
+            List<Playlist> myplaylists = _context.Playlists.Where(u => u.UserId == userid).ToList();
+            ViewBag.MyPlaylists = myplaylists;
+
             return View("Concerts");
         }
 
@@ -57,6 +71,11 @@ namespace SpotifyProject.Controllers
             ViewBag.UserId = HttpContext.Session.GetInt32("userID");
             ViewBag.FullName = HttpContext.Session.GetString("fullname");
             ViewBag.Username = HttpContext.Session.GetString("username");
+
+            int? userid = HttpContext.Session.GetInt32("userID");
+            List<Playlist> myplaylists = _context.Playlists.Where(u => u.UserId == userid).ToList();
+            ViewBag.MyPlaylists = myplaylists;
+
             return View("Charts");
         }
 
@@ -67,27 +86,90 @@ namespace SpotifyProject.Controllers
             ViewBag.UserId = HttpContext.Session.GetInt32("userID");
             ViewBag.FullName = HttpContext.Session.GetString("fullname");
             ViewBag.Username = HttpContext.Session.GetString("username");
+
+            int? userid = HttpContext.Session.GetInt32("userID");
+            List<Playlist> myplaylists = _context.Playlists.Where(u => u.UserId == userid).ToList();
+            ViewBag.MyPlaylists = myplaylists;
+
             return View("GenreMood");
         }
 
         [HttpGet]
-        [Route("userprofile/{userid}")]
-        public IActionResult UserProfile(int userid)
+        [Route("userprofile/{id}")]
+        public IActionResult UserProfile(int id)
         {
             ViewBag.UserId = HttpContext.Session.GetInt32("userID");
             ViewBag.FullName = HttpContext.Session.GetString("fullname");
             ViewBag.Username = HttpContext.Session.GetString("username");
+
+            int? userid = HttpContext.Session.GetInt32("userID");
+            List<Playlist> myplaylists = _context.Playlists.Where(u => u.UserId == userid).ToList();
+            ViewBag.MyPlaylists = myplaylists;
+
             return View("UserProfile");
         }
 
         [HttpGet]
-        [Route("songs/{userid}")]
-        public IActionResult Songs(int userid)
+        [Route("songs/{id}")]
+        public IActionResult Songs(int id)
         {
             ViewBag.UserId = HttpContext.Session.GetInt32("userID");
             ViewBag.FullName = HttpContext.Session.GetString("fullname");
             ViewBag.Username = HttpContext.Session.GetString("username");
-            return View("UserSongs");
+
+            int? userid = HttpContext.Session.GetInt32("userID");
+            List<Playlist> myplaylists = _context.Playlists.Where(u => u.UserId == userid).ToList();
+            ViewBag.MyPlaylists = myplaylists;
+
+            return View("Songs");
+        }
+
+        [HttpGet]
+        [Route("playlist/{id}")]
+        public IActionResult Playlist(int id)
+        {
+            ViewBag.UserId = HttpContext.Session.GetInt32("userID");
+            ViewBag.FullName = HttpContext.Session.GetString("fullname");
+            ViewBag.Username = HttpContext.Session.GetString("username");
+
+            int? userid = HttpContext.Session.GetInt32("userID");
+            List<Playlist> myplaylists = _context.Playlists.Where(u => u.UserId == userid).ToList();
+            ViewBag.MyPlaylists = myplaylists;
+            
+            Playlist thisplaylist = _context.Playlists.Where(p => p.PlaylistId == id).SingleOrDefault();
+            ViewBag.ThisPlaylist = thisplaylist;
+
+            return View("Playlists");
+        }
+
+        [HttpGet]
+        [Route("artists")]
+        public IActionResult AllArtists(int id)
+        {
+            ViewBag.UserId = HttpContext.Session.GetInt32("userID");
+            ViewBag.FullName = HttpContext.Session.GetString("fullname");
+            ViewBag.Username = HttpContext.Session.GetString("username");
+
+            int? userid = HttpContext.Session.GetInt32("userID");
+            List<Playlist> myplaylists = _context.Playlists.Where(u => u.UserId == userid).ToList();
+            ViewBag.MyPlaylists = myplaylists;
+
+            return View("AllArtists");
+        }
+
+        [HttpGet]
+        [Route("albums")]
+        public IActionResult AllAlbums(int id)
+        {
+            ViewBag.UserId = HttpContext.Session.GetInt32("userID");
+            ViewBag.FullName = HttpContext.Session.GetString("fullname");
+            ViewBag.Username = HttpContext.Session.GetString("username");
+
+            int? userid = HttpContext.Session.GetInt32("userID");
+            List<Playlist> myplaylists = _context.Playlists.Where(u => u.UserId == userid).ToList();
+            ViewBag.MyPlaylists = myplaylists;
+
+            return View("AllAlbums");
         }
 
         [HttpPost]
