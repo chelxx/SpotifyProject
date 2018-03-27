@@ -263,6 +263,30 @@ namespace SpotifyProject.Controllers
         }
 
         [HttpGet]
+        [Route("artist/ARTIST")]
+        public IActionResult OneArtist(int id)
+        {
+            int? UserId = HttpContext.Session.GetInt32("userID");
+            if (UserId == null)
+            {
+                TempData["NobodyThere"] = "You must be logged in first!";
+                return RedirectToAction("Index", "User");
+            }
+            else
+            {
+                ViewBag.UserId = HttpContext.Session.GetInt32("userID");
+                ViewBag.FullName = HttpContext.Session.GetString("fullname");
+                ViewBag.Username = HttpContext.Session.GetString("username");
+
+                int? userid = HttpContext.Session.GetInt32("userID");
+                List<Playlist> myplaylists = _context.Playlists.Where(u => u.UserId == userid).ToList();
+                ViewBag.MyPlaylists = myplaylists;
+
+                return View("OneArtist");
+            }
+        }
+
+        [HttpGet]
         [Route("recentlyplayed")]
         public IActionResult RecentlyPlayed()
         {
