@@ -4,6 +4,7 @@ html, body {
     background: linear-gradient(rgb(50, 50, 50), #131313);
     margin-top: 10px;
     height: 100%;
+    overflow: scroll;
 }
 * {
     color: #B3B3B3;
@@ -302,4 +303,34 @@ a img.artistpage {
 }
 button.delete:hover {
     background-color: tomato;
+}
+button.delete {
+    border-radius: 20px;
+    background-color: #57B65F;
+    border: none;
+}
+.headerwhite {
+    color: white;
+}
+img.concertimg {
+    border-radius: 50%;
+    width: 100px;
+    padding-right: 10px;
+}
+div.concerttable table tr td{
+    vertical-align: middle;
+}
+div.navbar-fixed-bottom {
+    width: 100%;
+    background-color: #121212;
+}
+button.btn-custom {
+    background-color: #121212;
+}
+button.btn-custom:hover {
+    background-color: #65D46E;
+    border-radius: 0;
+}
+.glyphicon {
+    color: white;
 }

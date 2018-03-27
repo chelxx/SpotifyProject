@@ -62,8 +62,22 @@
 </div>
 <div class="spotify-user-body">
     <hr class="invisibleborder">
-    <h1 class="header">PUT STUFF HERE!!!! MAYBRE RANDOM PLAYLISTS??</h1>
+    <h1 class="header play">User Profile</h1>
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum dolor leo, rhoncus eu elit ac, varius semper lacus. Aliquam rhoncus arcu sit amet mauris ullamcorper, eu hendrerit lectus mollis. Suspendisse enim justo, iaculis id neque ac, sodales dapibus risus. Sed placerat consectetur ultrices. Ut laoreet venenatis nunc et rhoncus. Mauris tristique rutrum est, id faucibus justo. Donec volutpat semper massa id efficitur. Fusce vitae lacus et quam fermentum efficitur. Morbi vitae ex id felis dictum fringilla at in nunc. Praesent in diam posuere, consequat eros quis, porta urna. Nunc sagittis, nisl at venenatis mattis, sapien eros interdum quam, id tempus nisl quam at nisl. Aliquam risus est, feugiat vel condimentum ultrices, tincidunt eu purus.</p>
 </div>
-
 <br>
+<br>
+<div class="navbar-fixed-bottom">
+    <audio id="audio" preload="auto"></audio>
+    <div class="btn-group">
+        <button onclick="Play('music.mp3','audio');" class="btn btn-custom"><span title="Play" id="play" class="glyphicon glyphicon-play aligned"></span></button>
+        <button onclick="Stop('music.mp3','audio');" class="btn btn-custom"><span title="Stop" id="stop" class="glyphicon glyphicon-stop aligned"></span></button>
+        <button onclick="Restart('music.mp3','audio');" class="btn btn-custom"><span title="Restart" id="restart" class="glyphicon glyphicon-step-backward aligned"></span></button>
+        <button onclick="Backward5('music.mp3','audio');" class="btn btn-custom"><span title="-5 seconds" id="play" class="glyphicon glyphicon-fast-backward aligned"></span></button>
+        <button onclick="Forward5('music.mp3','audio');" class="btn btn-custom"><span title="+5 seconds" id="play" class="glyphicon glyphicon-fast-forward aligned"></span></button>
+        <button onclick="Backward1('music.mp3','audio');" class="btn btn-custom"><span title="-1 second" id="play" class="glyphicon glyphicon-chevron-left aligned"></span></button>
+        <button onclick="Forward1('music.mp3','audio');" class="btn btn-custom"><span title="+1 second" id="play" class="glyphicon glyphicon-chevron-right aligned"></span></button>
+        <button onclick="VolumeUp('music.mp3','audio');" class="btn btn-custom"><span title="Volume Up" id="volumeup" class="glyphicon glyphicon-plus aligned"></span></button>
+        <button onclick="VolumeDown('music.mp3','audio');" class="btn btn-custom"><span title="Volume Down" id="volumedown" class="glyphicon glyphicon-minus aligned"></span></button>
+    </div>
+</div>
