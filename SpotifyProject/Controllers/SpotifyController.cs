@@ -89,6 +89,7 @@ namespace SpotifyProject.Controllers
             ViewBag.Username = HttpContext.Session.GetString("username");
             return View("UserSongs");
         }
+
         [HttpPost]
         [Route("addplaylist")]
         public IActionResult AddPlaylist(Playlist newPlaylist)

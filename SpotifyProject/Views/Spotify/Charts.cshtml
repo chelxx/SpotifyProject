@@ -34,6 +34,25 @@
     <br>
     <a href="#" class="sidebar">Chelsea</a>
     <br>
+    <br>
+
+    <!-- Trigger/Open The Modal -->
+    <button id="myBtn" class="addplaylist btn-info">+ NEW PLAYLIST</button>
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content" style="background: #1f1f1f; width: 550px; height: 110px; border: 2px solid #57B65F;">
+            <span class="close">&times;</span>
+            <form asp-action="AddPlaylist" asp-controller="Spotify" method="post">
+                <span asp-validation-for="PlaylistTitle" class="error"></span>
+                <br>
+                <input asp-for="PlaylistTitle" placeholder="Playlist Title" style="height: 30px; width: 305px; border-radius: 20px; padding-left: 20px; color: black;">
+                <button class="btn btn-info addplaylist" style="width: 150px; border-radius: 20px; margin-left: 20px;">ADD</button>
+            </form>
+        </div>
+    </div>
+    <!-- End of Modal -->
+    
 </div>
 <br>
 <div class="featuredalbum">
