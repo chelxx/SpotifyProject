@@ -310,9 +310,33 @@ namespace SpotifyProject.Controllers
             }
         }
 
+        [HttpGet]
+        [Route("top50charts")]
+        public IActionResult Top50Charts()
+        {
+            int? UserId = HttpContext.Session.GetInt32("userID");
+            if (UserId == null)
+            {
+                TempData["NobodyThere"] = "You must be logged in first!";
+                return RedirectToAction("Index", "User");
+            }
+            else
+            {
+                ViewBag.UserId = HttpContext.Session.GetInt32("userID");
+                ViewBag.FullName = HttpContext.Session.GetString("fullname");
+                ViewBag.Username = HttpContext.Session.GetString("username");
+
+                int? userid = HttpContext.Session.GetInt32("userID");
+                List<Playlist> myplaylists = _context.Playlists.Where(u => u.UserId == userid).ToList();
+                ViewBag.MyPlaylists = myplaylists;
+
+                return View("Chart50");
+            }
+        }
+
         [HttpPost]
         [Route("addplaylist")]
-        public IActionResult AddPlaylistTitle(Playlist newPlaylist)
+        public IActionResult AddPlaylist(Playlist newPlaylist)
         {
             int? UserId = HttpContext.Session.GetInt32("userID");
             if (UserId == null)
@@ -362,3 +386,5 @@ namespace SpotifyProject.Controllers
         // }
     }
 }
+
+

@@ -1,5 +1,5 @@
 @{
-    ViewData["Title"] = "Spotify Dashboard";
+    ViewData["Title"] = "Spotify Top Charts";
 }
 @model SpotifyProject.Models.PlaylistValidation
 <head>
@@ -54,48 +54,34 @@
     </div>
     <!-- End of Modal -->
 </div>
-
-<br>
-<div class="featuredalbum">
-    <div class="featuredalbumblur"></div>
-    <div class="albumshow">
-        <img src="~/images/kishi_albumcover.jpg" alt="Kishi Bashi" class="albumcover">
-    </div>
-    <div class="albuminfo">
-        <h3 class="header">151a</h3>
-        <h6 class="header skinny">Kishi Bashi</h6>
-        <h6 class="header skinny">In 2014 Kishi Bashi released his own line of coffee through Jittery Joe's called Royal Daark Blend. Each purchase comes with an exclusive song download.</h6>
-        <form action="#">
-            <button class="btn btn-info albumplaysong">PLAY</button>
-        </form>
-    </div>
-    <div class="savebtn">
-        <form action="#">
-            <button class="savesong">SAVE</button>
-        </form>
+<div class="row user-info-parent">
+    <div class="user-info">
+        <img src="~/images/profile2.png" alt="Spotify Logo" class="user-info-img">
+        <h1 class="user-info-username">@ViewBag.Username</h1>
     </div>
 </div>
-
-<div class="spotify-body">
-    <ul class="nav nav-tabs">
-    <li><a href="/overview">OVERVIEW</a></li>
-    <li><a href="/concerts">CONCERTS</a></li>
-    <li class="active"><a href="#">CHARTS</a></li>
-    <li><a href="/genremood">GENRES & MOODS</a></li>
-    </ul>
-</div>
-
-<!-- THIS IS THE LIMIT -->
-
-<div id="charts" class="tabcontent">
-    <h3 class="headerwhite">Featured Charts</h3>
-    <hr class="invisibleborder">    
-    <div class="imgs">
-        <a href="/top50charts"><img src="~/images/imgs/chart1.png" alt=""></a>
-        <img src="~/images/imgs/chart2.png" alt="">
-        <img src="~/images/imgs/chart3.png" alt="">
-        <img src="~/images/imgs/chart4.png" alt="">
-    </div>
+<div class="spotify-songs-body">
+    <hr class="invisibleborder"> 
+    <h1 class="header play">Top 50 Songs in the USA</h1>
+    <table class="table active">
+        <thead>
+            <tr>
+                <th class="sidelabel">RANK</th>
+                <th class="sidelabel">TITLE</th>
+                <th class="sidelabel">ARTIST</th>
+                <th class="sidelabel">URL</th>
+            </tr>
+        </thead>
+        <tbody>
+<!-- HARDCODED! FIX! -->
+            <tr>
+                <td id="top50songrank"></td>
+                <td id="top50song"></td>
+                <td id="top50songartist"></td>
+                <td id="top50songlink"></td>
+            </tr>
+        </tbody>
+    </table>
 </div>
 <br>
 <br>
