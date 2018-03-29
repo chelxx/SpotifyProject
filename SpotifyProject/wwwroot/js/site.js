@@ -83,6 +83,8 @@ function Backward1(music,id) {
 
 $(document).ready(function(){
 
+	
+
 	var topsongid = "aaa";
 	var top50songid = "bbb";
 
@@ -103,17 +105,16 @@ $(document).ready(function(){
 		var addtoplaylist = "";
 		for (var i = 0; i < 20; i++)
 		{
+			uniqueid = (i + topsongid);
 			topsongrank += "<h4 class='needborder'><a href=''>" + (i+1) + "</a></h4>";
-			topsong += "<h4 class='needborder'><a href='/addsongtoplaylist/"+ (i + topid) +"'>" + res.tracks.track[i]["name"] + "</a></h4>";
+			topsong += "<h4 class='needborder'><a href='" + uniqueid + "'>" + res.tracks.track[i]["name"] + "</a></h4>";
 			topsongartist += "<h4 class='needborder'><a href=''>" + res.tracks.track[i]["artist"]["name"] + "</a></h4>";
-			topsongplaycount += "<h4 class='needborder'><a href=''>" + res.tracks.track[i]["playcount"] + "</a></h4>";				
-			addtoplaylist += "<h4 class='needborder'> - </h4>";
+			topsongplaycount += "<h4 class='needborder'><a href=''>" + res.tracks.track[i]["playcount"] + "</a></h4>";		
 		}
 		$('td#topsongrank').html(topsongrank);
         $('td#topsong').html(topsong);
 		$('td#topsongartist').html(topsongartist);
 		$('td#topsongplaycount').html(topsongplaycount);
-		$('td#addtoplaylist').html(addtoplaylist);
     }, 'json');
 	// END OF TOP 20 TRACKS - OVERVIEW
 
@@ -138,5 +139,23 @@ $(document).ready(function(){
 		$('td#top50songlink').html(top50songlink);
     }, 'json');
 	// END OF TOP 50 TRACKS IN USA - CHARTS
+
+    // $('button').click('submit', function() {
+    //     var loc = $('form').find('input[name="track"]').val();
+    //     $.get('http://ws.audioscrobbler.com/2.0/?method=track.search&track=' + loc + '&api_key=b2b8f8bedc83ccbdd65af6d8a83d7ffc&format=json', function(res) {
+    //         var html_str = "";
+    //         for(var i = 0; i < 11; i++)
+    //         {
+    //             html_str += "<h1>" + res.results.trackmatches.track[i]["name"] + "</h1>";
+    //         }
+    //         // html_str += "<h1>" + res.results.trackmatches.track[0]["name"] + "</h1>";
+    //         $('div#search-results').html(html_str);
+    //         console.log (res);
+    //     }, 'json');
+    //     return false;
+    // });
+
+
+
 
 }) // END OF DOCUMENT.READY

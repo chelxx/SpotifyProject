@@ -64,3 +64,6 @@ namespace SpotifyProject.Models
         public string PlaylistTitle { get;set; }
     }
 }
+// MIGRATION NOTES: 
+// dotnet ef migrations add FirstMigration
+// dotnet ef database update

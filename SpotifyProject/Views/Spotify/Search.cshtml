@@ -1,0 +1,71 @@
+@{
+    ViewData["Title"] = "Spotify Dashboard";
+}
+@model SpotifyProject.Models.PlaylistValidation
+<head>
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<div class="topnav container-fluid navbar-fixed-top">
+    <form action="">
+        <input type="text" class="search" placeholder="Search" name="track">
+        <button class="btn btn-info search" style="width: 80px; color: white;" id="search">Search</button>
+    </form>
+    <a href="/logout" class="topnavright">Log Out&emsp;</a>
+    <a href="/userprofile/@ViewBag.UserId" class="topnavright">&nbsp;@ViewBag.Username&emsp;&emsp;</a>
+    <img src="~/images/profile.png" alt="Spotify Logo" class="profile">
+</div>
+<div class="sidenav">
+    <a href="/overview" class="sidebar">Browse</a>
+    <br>
+    <br>
+    <h5 class="sidelabel">YOUR LIBRARY</h5>
+    <a href="/songs/@ViewBag.UserId" class="sidebar">Songs</a>
+    <br>
+    <a href="/albums" class="sidebar">Albums</a>
+    <br>
+    <a href="/artists" class="sidebar">Artists</a>
+    <br>
+    <a href="/recentlyplayed" class="sidebar">Recently Played</a>
+    <br>
+    <br>
+    <h5 class="sidelabel">PLAYLISTS</h5>
+    @{
+        @foreach(var playlist in ViewBag.MyPlaylists)
+        {
+            <a href="/playlist/@playlist.PlaylistId" class="sidebar">@playlist.PlaylistTitle</a>
+            <br>
+        }
+    }
+    <br>
+    <br>
+
+    <!-- Trigger/Open The Modal -->
+    <button id="myBtn" class="addplaylist btn-info">+ New Playlist</button>
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content" style="background: #1f1f1f; width: 550px; height: 110px; border: 2px solid #57B65F;">
+            <span class="close">&times;</span>
+            <form asp-action="AddPlaylist" asp-controller="Spotify" method="post">
+                <span asp-validation-for="PlaylistTitle" class="error"></span>
+                <br>
+                <input asp-for="PlaylistTitle" placeholder="Playlist Title" style="height: 30px; width: 305px; border-radius: 20px; padding-left: 20px; color: black;">
+                <button class="btn btn-info addplaylist" style="width: 150px; border-radius: 20px; margin-left: 20px;">ADD</button>
+            </form>
+        </div>
+    </div>
+    <!-- End of Modal -->
+</div>
+
+<div class="row user-info-parent">
+    <div class="user-info">
+        <h1 class="user-info-username" style="margin-left: 120px">Search</h1>
+    </div>
+</div>
+<div class="spotify-songs-body">
+    <hr class="invisibleborder"> 
+</div>
+<div id="search-results" class="spotify-songs-body">
+    <!-- SEARCH RESULTS GO HERE -->
+
+</div>

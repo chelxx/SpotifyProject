@@ -334,6 +334,30 @@ namespace SpotifyProject.Controllers
             }
         }
 
+        [HttpGet]
+        [Route("search")]
+        public IActionResult Search()
+        {
+            int? UserId = HttpContext.Session.GetInt32("userID");
+            if (UserId == null)
+            {
+                TempData["NobodyThere"] = "You must be logged in first!";
+                return RedirectToAction("Index", "User");
+            }
+            else
+            {
+                ViewBag.UserId = HttpContext.Session.GetInt32("userID");
+                ViewBag.FullName = HttpContext.Session.GetString("fullname");
+                ViewBag.Username = HttpContext.Session.GetString("username");
+
+                int? userid = HttpContext.Session.GetInt32("userID");
+                List<Playlist> myplaylists = _context.Playlists.Where(u => u.UserId == userid).ToList();
+                ViewBag.MyPlaylists = myplaylists;
+
+                return View("Search");
+            }
+        }
+
         [HttpPost]
         [Route("addplaylist")]
         public IActionResult AddPlaylist(Playlist newPlaylist)
@@ -363,6 +387,19 @@ namespace SpotifyProject.Controllers
                     return View("Overview");
                 }
             }
+        }
+
+        [HttpGet]
+        [Route("addtracktoplaylist/{playlistid}/{trackid}")]
+        public IActionResult AddSongToPlaylist(string trackid, int playlistid)
+        {
+            Track addtrack = new Track
+            {
+                UserId = (int)HttpContext.Session.GetInt32("userID"),
+                TrackId = trackid,
+                PlaylistId = playlistid,
+            };
+            return RedirectToAction("Charts", "Spotify");
         }
 
         [HttpPost]

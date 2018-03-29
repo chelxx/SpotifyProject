@@ -326,6 +326,7 @@ div.navbar-fixed-bottom {
 }
 button.btn-custom {
     background-color: #121212;
+    padding: 10px;
 }
 button.btn-custom:hover {
     background-color: #65D46E;
@@ -337,5 +338,19 @@ button.btn-custom:hover {
 h4.needborder {
     padding: 5px;
     font-weight: 300;
-
+}
+.btn.btn-info.search {
+    width: 150px;
+    padding: 2px;
+    border-radius: 20px;
+    background-color: #57B65F;
+    border: none;
+}
+.btn:hover {
+    background-color: #65D46E;
+    transform: scale(1.05);
+    border-radius: 30px;
+}
+form {
+    display: inline-block;
 }

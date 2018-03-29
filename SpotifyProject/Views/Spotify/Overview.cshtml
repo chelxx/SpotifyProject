@@ -7,7 +7,8 @@
 </head>
 
 <div class="topnav container-fluid navbar-fixed-top">
-    <input type="search" class="search" placeholder="Search" id="search">
+    <!-- <input type="search" class="search" placeholder="Search" id="search"> -->
+    <a href="/search" class="btn btn-info search">Search</a>
     <a href="/logout" class="topnavright">Log Out&emsp;</a>
     <a href="/userprofile/@ViewBag.UserId" class="topnavright">&nbsp;@ViewBag.Username&emsp;&emsp;</a>
     <img src="~/images/profile.png" alt="Spotify Logo" class="profile">
@@ -38,7 +39,7 @@
     <br>
 
     <!-- Trigger/Open The Modal -->
-    <button id="myBtn" class="addplaylist btn-info">+ NEW PLAYLIST</button>
+    <button id="myBtn" class="addplaylist btn-info">+ New Playlist</button>
     <!-- The Modal -->
     <div id="myModal" class="modal">
         <!-- Modal content -->
@@ -107,7 +108,7 @@
                 <th class="sidelabel">TITLE</th>
                 <th class="sidelabel">ARTIST</th>
                 <th class="sidelabel">PLAY COUNT</th>
-                <th class="sidelabel">ACTION</th>
+                <th class="sidelabel">ADD TO PLAYLIST</th>
             </tr>
         </thead>
         <tbody>
@@ -116,7 +117,7 @@
                 <td id="topsong"></td>
                 <td id="topsongartist"></td>
                 <td id="topsongplaycount"></td>
-                <td id="addtoplaylist">Add to Playlist</td>
+                <td></td>
             </tr>
         </tbody>
         </table>
