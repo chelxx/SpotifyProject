@@ -18,13 +18,11 @@
     <br>
     <br>
     <h5 class="sidelabel">YOUR LIBRARY</h5>
-    <a href="/songs/@ViewBag.UserId" class="sidebar">Songs</a>
+    <a href="/artists" class="sidebar">Artists</a>
     <br>
     <a href="/albums" class="sidebar">Albums</a>
     <br>
-    <a href="/artists" class="sidebar">Artists</a>
-    <br>
-    <a href="/recentlyplayed" class="sidebar">Recently Played</a>
+    <a href="/songs/@ViewBag.UserId" class="sidebar">Songs</a>
     <br>
     <br>
     <h5 class="sidelabel">PLAYLISTS</h5>
@@ -111,20 +109,15 @@
                 <th class="sidelabel">ADD TO PLAYLIST</th>
             </tr>
         </thead>
-        <tbody>
-            <tr>
-                <td id="topsongrank"></td>
-                <td id="topsong"></td>
-                <td id="topsongartist"></td>
-                <td id="topsongplaycount"></td>
-                <td></td>
-            </tr>
+        <tbody id="tbodyoverview">
+
         </tbody>
         </table>
         <br>
         <br>
     </div>
 </div>
+<div id="hello"></div>
 <div class="navbar-fixed-bottom">
     <audio id="audio" preload="auto"></audio>
     <div class="btn-group">

@@ -151,6 +151,7 @@ namespace SpotifyProject.Controllers
             }
             else
             {
+                ViewBag.Birthday = _context.Users.Where(u => u.UserId == UserId).SingleOrDefault();
                 ViewBag.UserId = HttpContext.Session.GetInt32("userID");
                 ViewBag.FullName = HttpContext.Session.GetString("fullname");
                 ViewBag.Username = HttpContext.Session.GetString("username");

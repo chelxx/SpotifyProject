@@ -5,10 +5,21 @@
 <head>
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
+
 <div class="topnav container-fluid navbar-fixed-top">
-    <form action="">
-        <input type="text" class="search" placeholder="Search" name="track">
-        <button class="btn btn-info search" style="width: 80px; color: white;" id="search">Search</button>
+    <form>
+        <input type="text" class="search" placeholder="Search Tracks" name="track">
+        <button class="btn btn-info search" style="width: 80px; color: white;" id="searchtrack">Tracks</button>
+    </form>
+    &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+    <form>
+        <input type="text" class="search" placeholder="Search Artists" name="artist">
+        <button class="btn btn-info search" style="width: 80px; color: white;" id="searchartist">Artists</button>
+    </form>
+    &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+    <form>
+        <input type="text" class="search" placeholder="Search Albums" name="album">
+        <button class="btn btn-info search" style="width: 80px; color: white;" id="searchalbum">Albums</button>
     </form>
     <a href="/logout" class="topnavright">Log Out&emsp;</a>
     <a href="/userprofile/@ViewBag.UserId" class="topnavright">&nbsp;@ViewBag.Username&emsp;&emsp;</a>
@@ -19,13 +30,11 @@
     <br>
     <br>
     <h5 class="sidelabel">YOUR LIBRARY</h5>
-    <a href="/songs/@ViewBag.UserId" class="sidebar">Songs</a>
+    <a href="/artists" class="sidebar">Artists</a>
     <br>
     <a href="/albums" class="sidebar">Albums</a>
     <br>
-    <a href="/artists" class="sidebar">Artists</a>
-    <br>
-    <a href="/recentlyplayed" class="sidebar">Recently Played</a>
+    <a href="/songs/@ViewBag.UserId" class="sidebar">Songs</a>
     <br>
     <br>
     <h5 class="sidelabel">PLAYLISTS</h5>
@@ -64,8 +73,14 @@
 </div>
 <div class="spotify-songs-body">
     <hr class="invisibleborder"> 
-</div>
-<div id="search-results" class="spotify-songs-body">
-    <!-- SEARCH RESULTS GO HERE -->
+    <h1 class="header play">Results</h1>
+    <br>
+    <table class="table active">
+        <thead id="theadsearch">
 
+        </thead>
+        <tbody id="tbodysearch">
+
+        </tbody>
+    </table>
 </div>

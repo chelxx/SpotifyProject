@@ -82,79 +82,154 @@ function Backward1(music,id) {
 
 
 $(document).ready(function(){
-
-	
-
-	var topsongid = "aaa";
-	var top50songid = "bbb";
-
-	// function makeid() {
-	// 	var text = "";
-	// 	var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-	// 	for (var i = 0; i < 30; i++)
-	// 	  text += possible.charAt(Math.floor(Math.random() * possible.length));
-	// 	return text;
-	// }
-
 	// TOP 20 TRACKS - OVERVIEW
     $.get('http://ws.audioscrobbler.com/2.0/?method=chart.gettoptracks&&api_key=b2b8f8bedc83ccbdd65af6d8a83d7ffc&format=json', function(res) {
-		var topsongrank = "";
-        var topsong = "";
-		var topsongartist = "";
-		var topsongplaycount= "";
-		var addtoplaylist = "";
+		var toprow = "";
 		for (var i = 0; i < 20; i++)
 		{
-			uniqueid = (i + topsongid);
-			topsongrank += "<h4 class='needborder'><a href=''>" + (i+1) + "</a></h4>";
-			topsong += "<h4 class='needborder'><a href='" + uniqueid + "'>" + res.tracks.track[i]["name"] + "</a></h4>";
-			topsongartist += "<h4 class='needborder'><a href=''>" + res.tracks.track[i]["artist"]["name"] + "</a></h4>";
-			topsongplaycount += "<h4 class='needborder'><a href=''>" + res.tracks.track[i]["playcount"] + "</a></h4>";		
+			toprow += "<tr>";
+			toprow += "<td><h4 class='needborder'><a href=''>" + (i+1) + "</a></h4></td>";
+			toprow += "<td><h4 class='needborder'><a href=''>" + res.tracks.track[i]["name"] + "</a></h4></td>";
+			toprow += "<td><h4 class='needborder'><a href=''>" + res.tracks.track[i]["artist"]["name"] + "</a></h4></td>";
+			toprow += "<td><h4 class='needborder'><a href=''>" + res.tracks.track[i]["playcount"] + "</a></h4></td>";
+			toprow += "<td><h4 class='needborder'><a href=''>Add to Playlist</a></h4></td>";
+			toprow += "</tr>";
 		}
-		$('td#topsongrank').html(topsongrank);
-        $('td#topsong').html(topsong);
-		$('td#topsongartist').html(topsongartist);
-		$('td#topsongplaycount').html(topsongplaycount);
+		$('tbody#tbodyoverview').html(toprow);
     }, 'json');
 	// END OF TOP 20 TRACKS - OVERVIEW
 
-
 	// TOP 50 TRACKS IN USA - CHARTS
-	// NOTES: URL WILL NOT RECOGNIZE usa AS A COUNTRY PARAM??? I USED JAPAN LOL
-    $.get('http://ws.audioscrobbler.com/2.0/?method=geo.gettoptracks&country=japan&api_key=b2b8f8bedc83ccbdd65af6d8a83d7ffc&format=json', function(res) {
-		var top50songrank = "";
-        var top50song = "";
-		var top50songartist = "";
-		var top50songlink = "";
+    $.get('http://ws.audioscrobbler.com/2.0/?method=geo.gettoptracks&country=canada&api_key=b2b8f8bedc83ccbdd65af6d8a83d7ffc&format=json', function(res) {
+		var top50row = "";
 		for (var i = 0; i < 50; i++)
 		{
-			top50songrank += "<h4 class='needborder'><a href=''>" + (i+1) + "</a></h4>";
-			top50song += "<h4 class='needborder'><a href=''>" + res.tracks.track[i]["name"] + "</a></h4>";
-			top50songartist += "<h4 class='needborder'><a href=''>" + res.tracks.track[i]["artist"]["name"] + "</a></h4>";
-			top50songlink += "<h4 class='needborder'><a href='" + res.tracks.track[i]["url"] + "'>Follow Me</a></h4>";
+			top50row += "<tr>";
+			top50row += "<td><h4 class='needborder'><a href=''>" + (i+1) + "</a></h4></td>";
+			top50row += "<td><h4 class='needborder'><a href=''>" + res.tracks.track[i]["name"] + "</a></h4></td>";
+			top50row += "<td><h4 class='needborder'><a href=''>" + res.tracks.track[i]["artist"]["name"] + "</a></h4></td>";
+			top50row += "<td><h4 class='needborder'><a href=''>Follow Me</a></h4></td>";
+			top50row += "</tr>";
 		}
-		$('td#top50songrank').html(top50songrank);
-        $('td#top50song').html(top50song);
-		$('td#top50songartist').html(top50songartist);
-		$('td#top50songlink').html(top50songlink);
+		$('tbody#tbodychart').html(top50row);
     }, 'json');
 	// END OF TOP 50 TRACKS IN USA - CHARTS
 
-    // $('button').click('submit', function() {
-    //     var loc = $('form').find('input[name="track"]').val();
-    //     $.get('http://ws.audioscrobbler.com/2.0/?method=track.search&track=' + loc + '&api_key=b2b8f8bedc83ccbdd65af6d8a83d7ffc&format=json', function(res) {
-    //         var html_str = "";
-    //         for(var i = 0; i < 11; i++)
-    //         {
-    //             html_str += "<h1>" + res.results.trackmatches.track[i]["name"] + "</h1>";
-    //         }
-    //         // html_str += "<h1>" + res.results.trackmatches.track[0]["name"] + "</h1>";
-    //         $('div#search-results').html(html_str);
-    //         console.log (res);
-    //     }, 'json');
-    //     return false;
-    // });
+	// ARTISTS
+    $.get('http://ws.audioscrobbler.com/2.0/?method=chart.gettopartists&&api_key=b2b8f8bedc83ccbdd65af6d8a83d7ffc&format=json', function(res) {
+		var topartistrow1 = "";
+		var topartistrow2 = "";
+		for (var i = 0; i < 5; i++)
+		{
+			topartistrow1 += "<img src='" + res.artists.artist[i]["image"][3]["#text"] + "' class='artistpage' id='" + res.artists.artist[i]["mbid"] + "'>";
+		}
+		for (var i = 6; i < 11; i++)
+		{
+			topartistrow2 += "<img src='" + res.artists.artist[i]["image"][3]["#text"] + "' class='artistpage'  id='" + res.artists.artist[i]["mbid"] + "'>";
+		}
+		$('div#artist1').html(topartistrow1);
+		$('div#artist2').html(topartistrow2);
+    }, 'json');
+	// END OF ARTISTS
 
+	// ARTISTS INFO
+	$('body').on('click','img',function(){
+		var id = $(this).attr("id")
+		$.get('http://ws.audioscrobbler.com/2.0/?method=artist.getinfo&mbid=' + id + '&api_key=b2b8f8bedc83ccbdd65af6d8a83d7ffc&format=json', function(res) {
+			var artistinfo = "";
+			artistinfo += "<h2 class='play'>Artist: " + res.artist.name + "</h2>";
+			artistinfo += "<h3 class='bio's>BIOGRAPHY: " + res.artist.bio.content + "</h3>";
+			
+			$('div#artistinfo').html(artistinfo);
+		}, 'json');
+	});
+	// END OF ARTISTS INFO
+
+	// SEARCH FOR TRACK
+    $('button#searchtrack').click('submit', function() {
+        var track = $('form').find('input[name="track"]').val();
+        $.get('http://ws.audioscrobbler.com/2.0/?method=track.search&track=' + track + '&api_key=b2b8f8bedc83ccbdd65af6d8a83d7ffc&format=json', function(res) {
+			var trackrow = "";
+			var trackroww = "";
+			for(var i = 0; i < 1; i++)
+			{
+				trackroww += "<tr>";
+				trackroww += "<td>ART</td>";
+				trackroww += "<td>TRACK</td>";
+				trackroww += "<td>ARTIST</td>";
+				trackroww += "</tr>";
+			}
+            for(var i = 0; i < 20; i++)
+            {
+				trackrow += "<tr>";
+				trackrow += "<td><img src='" + res.results.trackmatches.track[i]["image"][3]["#text"] + "' class='roundme'></td>";
+				trackrow += "<td><h4 class='needborder'><a href=''>" + res.results.trackmatches.track[i]["name"] + "</a></h4></td>";
+				trackrow += "<td><h4 class='needborder'><a href=''>" + res.results.trackmatches.track[i]["artist"] + "</a></h4></td>";
+				trackrow += "</tr>";
+            }
+			$('thead#theadsearch').html(trackroww);
+			$('tbody#tbodysearch').html(trackrow);
+		}, 'json');
+		return false;
+	});
+	// END OF SEARCH FOR TRACK
+	
+	// SEARCH FOR ARTIST
+    $('button#searchartist').click('submit', function() {
+        var artist = $('form').find('input[name="artist"]').val();
+        $.get('http://ws.audioscrobbler.com/2.0/?method=artist.search&artist=' + artist + '&api_key=b2b8f8bedc83ccbdd65af6d8a83d7ffc&format=json', function(res) {
+			var artistroww = "";
+			var artistrow = "";
+			for(var i = 0; i < 1; i++)
+			{
+				trackroww += "<tr>";
+				trackroww += "<td>ART</td>";
+				trackroww += "<td>ARTIST</td>";
+				trackroww += "</tr>";
+			}
+            for(var i = 0; i < 20; i++)
+            {
+				artistrow += "<tr>";
+				artistrow += "<td><img src='" + res.results.artistmatches.artist[i]["image"][3]["#text"] + "' class='roundme'></td>";
+				artistrow += "<td><h4 class='needborder'><a href=''>" + res.results.artistmatches.artist[i]["name"] + "</a></h4></td>";
+				artistrow += "</tr>";
+            }
+			$('thead#theadsearch').html(trackroww);
+			$('tbody#tbodysearch').html(trackrow);
+		}, 'json');
+		return false;
+	});
+	// END OF SEARCH FOR ARTIST
+
+
+	// SEARCH FOR ALBUM
+	$('button#searchalbum').click('submit', function() {
+        var banana = $('form').find('input[name="album"]').val();
+        $.get('http://ws.audioscrobbler.com/2.0/?method=album.search&album=' + banana + '&api_key=b2b8f8bedc83ccbdd65af6d8a83d7ffc&format=json', function(res) {
+			var ban = "";
+			var trackroww = "";
+			for(var i = 0; i < 1; i++)
+			{
+				trackroww += "<tr>";
+				trackroww += "<td>ART</td>";
+				trackroww += "<td>ALBUM</td>";
+				trackroww += "<td>ARTIST</td>";
+				trackroww += "</tr>";
+			}
+            for(var i = 0; i < 20; i++)
+            {
+				ban += "<tr>";
+				ban += "<td><img src='" + res.results.albummatches.album[i]["image"][3]["#text"] + "' class='roundmealbum'></td>";
+				ban += "<td><h4 class='needborder'><a href=''>" + res.results.albummatches.album[i]["name"] + "</a></h4></td>";
+				ban += "<td><h4 class='needborder'><a href=''>" + res.results.albummatches.album[i]["artist"] + "</a></h4></td>";				
+				ban += "</tr>";
+			}
+			$('thead#theadsearch').html(trackroww);			
+			$('tbody#tbodysearch').html(ban);			
+        }, 'json');
+        return false;
+    });
+	// END OF SEARCH FOR ALBUM
 
 
 

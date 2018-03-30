@@ -127,6 +127,11 @@ button.btn:hover {
     transform: scale(1.05);
     border-radius: 30px;
 }
+button.btn.btn-info.search:hover {
+    background-color: #65D46E !important;
+    transform: scale(1.05);
+    border-radius: 30px;
+}
 button.savesong {
     background: none;
     width: 100px;
@@ -288,7 +293,7 @@ button.addplaylist:hover {
     border-radius: 10px;
     border: none;
 }
-a img.artistpage {
+img.artistpage {
     border-radius: 50%;
     height: 250px;
     border: 6px groove #57B65F;
@@ -353,4 +358,22 @@ h4.needborder {
 }
 form {
     display: inline-block;
+}
+img.roundme {
+    border-radius: 50%;
+    width: 100px;
+    padding-right: 10px;
+}
+img.roundmealbum {
+    border-radius: 50%;
+    width: 300px;
+    padding-right: 10px;
+}
+td {
+    vertical-align: middle;
+}
+.bio {
+    font-weight: 300;
+    letter-spacing: 1px;
+    color: #57B65F;
 }
