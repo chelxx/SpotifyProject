@@ -92,7 +92,7 @@ $(document).ready(function(){
 			toprow += "<td><h4 class='needborder'><a href=''>" + res.tracks.track[i]["name"] + "</a></h4></td>";
 			toprow += "<td><h4 class='needborder'><a href=''>" + res.tracks.track[i]["artist"]["name"] + "</a></h4></td>";
 			toprow += "<td><h4 class='needborder'><a href=''>" + res.tracks.track[i]["playcount"] + "</a></h4></td>";
-			toprow += "<td><h4 class='needborder'><a href=''>Add to Playlist</a></h4></td>";
+			toprow += "<td><h4 class='needborder'><a href='/addtracktosongs/'>Add to Songs</a></h4></td>";
 			toprow += "</tr>";
 		}
 		$('tbody#tbodyoverview').html(toprow);
@@ -108,7 +108,7 @@ $(document).ready(function(){
 			top50row += "<td><h4 class='needborder'><a href=''>" + (i+1) + "</a></h4></td>";
 			top50row += "<td><h4 class='needborder'><a href=''>" + res.tracks.track[i]["name"] + "</a></h4></td>";
 			top50row += "<td><h4 class='needborder'><a href=''>" + res.tracks.track[i]["artist"]["name"] + "</a></h4></td>";
-			top50row += "<td><h4 class='needborder'><a href=''>Follow Me</a></h4></td>";
+			top50row += "<td><h4 class='needborder'><a href='/addtracktosongs/'>Add to Songs</a></h4></td>";
 			top50row += "</tr>";
 		}
 		$('tbody#tbodychart').html(top50row);
@@ -151,6 +151,8 @@ $(document).ready(function(){
         $.get('http://ws.audioscrobbler.com/2.0/?method=track.search&track=' + track + '&api_key=b2b8f8bedc83ccbdd65af6d8a83d7ffc&format=json', function(res) {
 			var trackrow = "";
 			var trackroww = "";
+			var results = "";
+			results = "<h2 class='header play'>Results...</h2>";
 			for(var i = 0; i < 1; i++)
 			{
 				trackroww += "<tr>";
@@ -166,7 +168,8 @@ $(document).ready(function(){
 				trackrow += "<td><h4 class='needborder'><a href=''>" + res.results.trackmatches.track[i]["name"] + "</a></h4></td>";
 				trackrow += "<td><h4 class='needborder'><a href=''>" + res.results.trackmatches.track[i]["artist"] + "</a></h4></td>";
 				trackrow += "</tr>";
-            }
+			}
+			$('div#results').html(results);
 			$('thead#theadsearch').html(trackroww);
 			$('tbody#tbodysearch').html(trackrow);
 		}, 'json');
@@ -174,12 +177,14 @@ $(document).ready(function(){
 	});
 	// END OF SEARCH FOR TRACK
 	
-	// SEARCH FOR ARTIST
+	// SEARCH FOR ARTIST - WHAT THE FUCK?!
     $('button#searchartist').click('submit', function() {
         var artist = $('form').find('input[name="artist"]').val();
         $.get('http://ws.audioscrobbler.com/2.0/?method=artist.search&artist=' + artist + '&api_key=b2b8f8bedc83ccbdd65af6d8a83d7ffc&format=json', function(res) {
 			var artistroww = "";
 			var artistrow = "";
+			var results = "";
+			results = "<h2 class='header play'>Results...</h2>";
 			for(var i = 0; i < 1; i++)
 			{
 				trackroww += "<tr>";
@@ -193,7 +198,8 @@ $(document).ready(function(){
 				artistrow += "<td><img src='" + res.results.artistmatches.artist[i]["image"][3]["#text"] + "' class='roundme'></td>";
 				artistrow += "<td><h4 class='needborder'><a href=''>" + res.results.artistmatches.artist[i]["name"] + "</a></h4></td>";
 				artistrow += "</tr>";
-            }
+			}
+			$('div#results').html(results);			
 			$('thead#theadsearch').html(trackroww);
 			$('tbody#tbodysearch').html(trackrow);
 		}, 'json');
@@ -208,6 +214,8 @@ $(document).ready(function(){
         $.get('http://ws.audioscrobbler.com/2.0/?method=album.search&album=' + banana + '&api_key=b2b8f8bedc83ccbdd65af6d8a83d7ffc&format=json', function(res) {
 			var ban = "";
 			var trackroww = "";
+			var results = "";
+			results = "<h2 class='header play'>Results...</h2>";
 			for(var i = 0; i < 1; i++)
 			{
 				trackroww += "<tr>";
@@ -224,6 +232,7 @@ $(document).ready(function(){
 				ban += "<td><h4 class='needborder'><a href=''>" + res.results.albummatches.album[i]["artist"] + "</a></h4></td>";				
 				ban += "</tr>";
 			}
+			$('div#results').html(results);			
 			$('thead#theadsearch').html(trackroww);			
 			$('tbody#tbodysearch').html(ban);			
         }, 'json');
@@ -232,5 +241,8 @@ $(document).ready(function(){
 	// END OF SEARCH FOR ALBUM
 
 
-
+	
 }) // END OF DOCUMENT.READY
+
+
+// http://ws.audioscrobbler.com/2.0/?method=track.getInfo&api_key=b2b8f8bedc83ccbdd65af6d8a83d7ffc&artist=' + artist name + '&track=' + track name + '&format=json

@@ -377,3 +377,7 @@ td {
     letter-spacing: 1px;
     color: #57B65F;
 }
+td.needborder { 
+    text-align: center !important; 
+    vertical-align: middle !important;
+}

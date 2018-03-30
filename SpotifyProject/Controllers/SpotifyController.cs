@@ -391,6 +391,20 @@ namespace SpotifyProject.Controllers
         }
 
         [HttpGet]
+        [Route("addtracktosongs/{trackid}")]
+        public IActionResult AddSongToPlaylist(string trackid)
+        {
+            Track addtrack = new Track
+            {
+                UserId = (int)HttpContext.Session.GetInt32("userID"),
+                TrackId = trackid,
+            };
+            _context.Add(addtrack);
+            _context.SaveChanges();
+            return RedirectToAction("Overview", "Spotify");
+        }
+
+        [HttpGet]
         [Route("addtracktoplaylist/{playlistid}/{trackid}")]
         public IActionResult AddSongToPlaylist(string trackid, int playlistid)
         {
