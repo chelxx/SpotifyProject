@@ -9,5 +9,6 @@ namespace SpotifyProject.Models
         public SpotifyContext(DbContextOptions<SpotifyContext> options) : base(options) { }
         public DbSet<User> Users { get;set; }
         public DbSet<Playlist> Playlists { get;set; }
+        public DbSet<Track> Tracks { get;set; }
     }
 }

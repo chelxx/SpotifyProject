@@ -179,6 +179,7 @@ namespace SpotifyProject.Controllers
                 ViewBag.UserId = HttpContext.Session.GetInt32("userID");
                 ViewBag.FullName = HttpContext.Session.GetString("fullname");
                 ViewBag.Username = HttpContext.Session.GetString("username");
+                ViewBag.AllTracks = _context.Tracks.Where(t => t.UserId == id).ToList();
 
                 int? userid = HttpContext.Session.GetInt32("userID");
                 List<Playlist> myplaylists = _context.Playlists.Where(u => u.UserId == userid).ToList();
@@ -390,31 +391,19 @@ namespace SpotifyProject.Controllers
             }
         }
 
-        [HttpGet]
-        [Route("addtracktosongs/{trackid}")]
-        public IActionResult AddSongToPlaylist(string trackid)
+        [HttpPost]
+        [Route("addtracktosongs")]
+        public IActionResult AddTrackToSongs(Track newTrack)
         {
             Track addtrack = new Track
             {
                 UserId = (int)HttpContext.Session.GetInt32("userID"),
-                TrackId = trackid,
+                data_track = newTrack.data_track,
+                data_artist = newTrack.data_artist,
             };
             _context.Add(addtrack);
             _context.SaveChanges();
             return RedirectToAction("Overview", "Spotify");
-        }
-
-        [HttpGet]
-        [Route("addtracktoplaylist/{playlistid}/{trackid}")]
-        public IActionResult AddSongToPlaylist(string trackid, int playlistid)
-        {
-            Track addtrack = new Track
-            {
-                UserId = (int)HttpContext.Session.GetInt32("userID"),
-                TrackId = trackid,
-                PlaylistId = playlistid,
-            };
-            return RedirectToAction("Charts", "Spotify");
         }
 
         [HttpPost]
@@ -426,16 +415,6 @@ namespace SpotifyProject.Controllers
             _context.SaveChanges();
             return RedirectToAction("Overview", "Spotify");
         }
-
-        // [HttpPost]
-        // [Route("removesong/{id}")]
-        // public IActionResult RemoveSongFromPlaylist(int id)
-        // {
-        //     QUERY TO GET THE SPECIFIC SONG TO REMOVE FROM THE PLAYLIST
-        //     _context.Remove(songinplaylist);
-        //     _context.SaveChanges();
-        //     return RedirectToAction("Playlist", "Spotify");
-        // }
     }
 }
 

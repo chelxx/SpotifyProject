@@ -92,7 +92,12 @@ $(document).ready(function(){
 			toprow += "<td><h4 class='needborder'><a href=''>" + res.tracks.track[i]["name"] + "</a></h4></td>";
 			toprow += "<td><h4 class='needborder'><a href=''>" + res.tracks.track[i]["artist"]["name"] + "</a></h4></td>";
 			toprow += "<td><h4 class='needborder'><a href=''>" + res.tracks.track[i]["playcount"] + "</a></h4></td>";
-			toprow += "<td><h4 class='needborder'><a href='/addtracktosongs/'>Add to Songs</a></h4></td>";
+			
+			toprow += "<td><form action='/addtracktosongs'method='post'>";
+			toprow += "<input type='hidden' value=\"" + res.tracks.track[i]["name"] + "\" name='data_track'>"
+			toprow += "<input type='hidden' value=\"" + res.tracks.track[i]["artist"]["name"] + "\" name='data_artist'>";
+			toprow += "<input type='submit' value='Add to Songs' class='btn btn-info search' style='color: white; width:100px; margin-top: 13px;'>";
+			toprow += "</form></td>";
 			toprow += "</tr>";
 		}
 		$('tbody#tbodyoverview').html(toprow);
@@ -108,7 +113,12 @@ $(document).ready(function(){
 			top50row += "<td><h4 class='needborder'><a href=''>" + (i+1) + "</a></h4></td>";
 			top50row += "<td><h4 class='needborder'><a href=''>" + res.tracks.track[i]["name"] + "</a></h4></td>";
 			top50row += "<td><h4 class='needborder'><a href=''>" + res.tracks.track[i]["artist"]["name"] + "</a></h4></td>";
-			top50row += "<td><h4 class='needborder'><a href='/addtracktosongs/'>Add to Songs</a></h4></td>";
+			
+			top50row += "<td><form action='/addtracktosongs'method='post'>";
+			top50row += "<input type='hidden' value=\"" + res.tracks.track[i]["name"] + "\" name='data_track'>";
+			top50row += "<input type='hidden' value=\"" + res.tracks.track[i]["artist"]["name"] + "\" name='data_artist'>";
+			top50row += "<input type='submit' value='Add to Songs' class='btn btn-info search' style='color: white; width:100px; margin-top: 13px;'>";
+			top50row += "</form></td>";
 			top50row += "</tr>";
 		}
 		$('tbody#tbodychart').html(top50row);
@@ -152,21 +162,28 @@ $(document).ready(function(){
 			var trackrow = "";
 			var trackroww = "";
 			var results = "";
-			results = "<h2 class='header play'>Results...</h2>";
+			results = "<h2 class='header play'>Results for Track Search...</h2>";
 			for(var i = 0; i < 1; i++)
 			{
 				trackroww += "<tr>";
 				trackroww += "<td>ART</td>";
 				trackroww += "<td>TRACK</td>";
 				trackroww += "<td>ARTIST</td>";
+				trackroww += "<td>ACTION</td>"
 				trackroww += "</tr>";
 			}
             for(var i = 0; i < 20; i++)
             {
 				trackrow += "<tr>";
 				trackrow += "<td><img src='" + res.results.trackmatches.track[i]["image"][3]["#text"] + "' class='roundme'></td>";
-				trackrow += "<td><h4 class='needborder'><a href=''>" + res.results.trackmatches.track[i]["name"] + "</a></h4></td>";
-				trackrow += "<td><h4 class='needborder'><a href=''>" + res.results.trackmatches.track[i]["artist"] + "</a></h4></td>";
+				trackrow += "<td><h4 class='needborder'><a href='" + res.results.trackmatches.track[i]["url"]  + "'>" + res.results.trackmatches.track[i]["name"] + "</a></h4></td>";
+				trackrow += "<td><h4 class='needborder'><a href='" + res.results.trackmatches.track[i]["url"]  + "'>" + res.results.trackmatches.track[i]["artist"] + "</a></h4></td>";
+			
+				trackrow += "<td><form action='/addtracktosongs'method='post'>";
+				trackrow += "<input type='hidden' value=\"" + res.results.trackmatches.track[i]["name"] + "\" name='data_track'>";
+				trackrow += "<input type='hidden' value=\"" + res.results.trackmatches.track[i]["artist"] + "\" name='data_artist'>";
+				trackrow += "<input type='submit' value='Add to Songs' class='btn btn-info search' style='color: white; width:100px; margin-top: 13px;'>";
+				trackrow += "</form></td>";
 				trackrow += "</tr>";
 			}
 			$('div#results').html(results);
@@ -179,12 +196,13 @@ $(document).ready(function(){
 	
 	// SEARCH FOR ARTIST - WHAT THE FUCK?!
     $('button#searchartist').click('submit', function() {
-        var artist = $('form').find('input[name="artist"]').val();
-        $.get('http://ws.audioscrobbler.com/2.0/?method=artist.search&artist=' + artist + '&api_key=b2b8f8bedc83ccbdd65af6d8a83d7ffc&format=json', function(res) {
-			var artistroww = "";
+		console.log("FIND THE ARTIST")
+		var artist = $('form').find('input[name="artist"]').val();
+		$.get('http://ws.audioscrobbler.com/2.0/?method=artist.search&artist=' + artist + '&api_key=b2b8f8bedc83ccbdd65af6d8a83d7ffc&format=json', function(res) {
+			var trackroww = "";
 			var artistrow = "";
 			var results = "";
-			results = "<h2 class='header play'>Results...</h2>";
+			results = "<h2 class='header play'>Results for Artists...</h2>";
 			for(var i = 0; i < 1; i++)
 			{
 				trackroww += "<tr>";
@@ -192,30 +210,30 @@ $(document).ready(function(){
 				trackroww += "<td>ARTIST</td>";
 				trackroww += "</tr>";
 			}
-            for(var i = 0; i < 20; i++)
-            {
+			for(var i = 0; i < 20; i++)
+			{
 				artistrow += "<tr>";
 				artistrow += "<td><img src='" + res.results.artistmatches.artist[i]["image"][3]["#text"] + "' class='roundme'></td>";
-				artistrow += "<td><h4 class='needborder'><a href=''>" + res.results.artistmatches.artist[i]["name"] + "</a></h4></td>";
+				artistrow += "<td><h4 class='needborder'><a href='"+ res.results.artistmatches.artist[i]["url"]+"'>" + res.results.artistmatches.artist[i]["name"] + "</a></h4></td>";
 				artistrow += "</tr>";
 			}
-			$('div#results').html(results);			
+			$('div#results').html(results);            
 			$('thead#theadsearch').html(trackroww);
-			$('tbody#tbodysearch').html(trackrow);
+			$('tbody#tbodysearch').html(artistrow);
 		}, 'json');
 		return false;
 	});
 	// END OF SEARCH FOR ARTIST
-
-
+	
+	
 	// SEARCH FOR ALBUM
 	$('button#searchalbum').click('submit', function() {
-        var banana = $('form').find('input[name="album"]').val();
-        $.get('http://ws.audioscrobbler.com/2.0/?method=album.search&album=' + banana + '&api_key=b2b8f8bedc83ccbdd65af6d8a83d7ffc&format=json', function(res) {
+		var banana = $('form').find('input[name="album"]').val();
+		$.get('http://ws.audioscrobbler.com/2.0/?method=album.search&album=' + banana + '&api_key=b2b8f8bedc83ccbdd65af6d8a83d7ffc&format=json', function(res) {
 			var ban = "";
 			var trackroww = "";
 			var results = "";
-			results = "<h2 class='header play'>Results...</h2>";
+			results = "<h2 class='header play'>Results for Albums...</h2>";
 			for(var i = 0; i < 1; i++)
 			{
 				trackroww += "<tr>";
@@ -224,20 +242,20 @@ $(document).ready(function(){
 				trackroww += "<td>ARTIST</td>";
 				trackroww += "</tr>";
 			}
-            for(var i = 0; i < 20; i++)
-            {
+			for(var i = 0; i < 20; i++)
+			{
 				ban += "<tr>";
 				ban += "<td><img src='" + res.results.albummatches.album[i]["image"][3]["#text"] + "' class='roundmealbum'></td>";
-				ban += "<td><h4 class='needborder'><a href=''>" + res.results.albummatches.album[i]["name"] + "</a></h4></td>";
-				ban += "<td><h4 class='needborder'><a href=''>" + res.results.albummatches.album[i]["artist"] + "</a></h4></td>";				
+				ban += "<td><h4 class='needborder'><a href='"+ res.results.albummatches.album[i]["url"] +"'>" + res.results.albummatches.album[i]["name"] + "</a></h4></td>";
+				ban += "<td><h4 class='needborder'><a href='"+ res.results.albummatches.album[i]["url"] +"'>" + res.results.albummatches.album[i]["artist"] + "</a></h4></td>";                
 				ban += "</tr>";
 			}
-			$('div#results').html(results);			
-			$('thead#theadsearch').html(trackroww);			
-			$('tbody#tbodysearch').html(ban);			
-        }, 'json');
-        return false;
-    });
+			$('div#results').html(results);            
+			$('thead#theadsearch').html(trackroww);            
+			$('tbody#tbodysearch').html(ban);            
+		}, 'json');
+		return false;
+	});
 	// END OF SEARCH FOR ALBUM
 
 

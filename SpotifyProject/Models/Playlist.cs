@@ -10,10 +10,10 @@ namespace SpotifyProject.Models
         public string PlaylistTitle { get; set; }
         public User User { get; set; }
         public int UserId { get; set; }
-        public List<Track> Musics { get;set; }
+        public List<Track> Tracks { get;set; }
         public Playlist()
         {
-            Musics = new List<Track>();
+            Tracks = new List<Track>();
         }
     }
 }

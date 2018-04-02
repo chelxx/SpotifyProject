@@ -11,9 +11,10 @@ using System;
 namespace SpotifyProject.Migrations
 {
     [DbContext(typeof(SpotifyContext))]
-    partial class SpotifyContextModelSnapshot : ModelSnapshot
+    [Migration("20180330181415_SixthMig")]
+    partial class SixthMig
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

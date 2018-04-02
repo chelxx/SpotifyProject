@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
 namespace SpotifyProject.Models
@@ -8,11 +9,15 @@ namespace SpotifyProject.Models
     {
         [Key]
         public string TrackId { get;set; }
+        
         public int UserId { get;set; }
-        public int PlaylistId { get;set; }
-        public string TrackName { get;set; }
-        public string Artist { get;set; }
+
+        [DisplayName("data_track")]
+        public string data_track { get;set; }
+
+        [DisplayName("data_artist")]
+        public string data_artist { get;set; }
+
         public User User { get;set; }
-        public Playlist Playlist { get;set; }
     }
 };  

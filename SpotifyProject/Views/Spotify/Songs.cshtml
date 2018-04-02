@@ -68,41 +68,18 @@
             <tr>
                 <th class="sidelabel">TITLE</th>
                 <th class="sidelabel">ARTIST</th>
-                <th class="sidelabel">ALBUM</th>
-                <th class="sidelabel">ACTION</th>
             </tr>
         </thead>
         <tbody>
-<!-- HARDCODED! FIX! -->
-            <tr>
-                <td><a href="">Song Name</a></td>
-                <td><a href="">Artist Name</a></td>
-                <td><a href="">Album Name</a></td>
-                <td><a href="">Add to Playlist</a></td>
-                <!-- HOW TO ADD SONG TO A SPECIFIC PLAYLIST -->
-            </tr>
-            <tr>
-                <td><a href="">Song Name</a></td>
-                <td><a href="">Artist Name</a></td>
-                <td><a href="">Album Name</a></td>
-                <td><a href="">Add to Playlist</a></td>
-                <!-- HOW TO ADD SONG TO A SPECIFIC PLAYLIST -->
-            </tr>
-            <tr>
-                <td><a href="">Song Name</a></td>
-                <td><a href="">Artist Name</a></td>
-                <td><a href="">Album Name</a></td>
-                <td><a href="">Add to Playlist</a></td>
-                <!-- HOW TO ADD SONG TO A SPECIFIC PLAYLIST -->
-            </tr>
-            <tr>
-                <td><a href="">Song Name</a></td>
-                <td><a href="">Artist Name</a></td>
-                <td><a href="">Album Name</a></td>
-                <td><a href="">Add to Playlist</a></td>
-                <!-- HOW TO ADD SONG TO A SPECIFIC PLAYLIST -->
-            </tr>
-<!-- END HARDCODE! FIX! -->
+        @{
+            @foreach(var track in ViewBag.AllTracks)
+            {
+                <tr>
+                    <td><h4 class='needborder'>@track.data_track</h4></td>
+                    <td><h4 class='needborder'>@track.data_artist</h4></td>
+                </tr>
+            }
+        }
         </tbody>
     </table>
 </div>

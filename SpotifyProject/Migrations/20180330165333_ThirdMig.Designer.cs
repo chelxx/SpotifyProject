@@ -11,9 +11,10 @@ using System;
 namespace SpotifyProject.Migrations
 {
     [DbContext(typeof(SpotifyContext))]
-    partial class SpotifyContextModelSnapshot : ModelSnapshot
+    [Migration("20180330165333_ThirdMig")]
+    partial class ThirdMig
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -41,13 +42,13 @@ namespace SpotifyProject.Migrations
                     b.Property<string>("TrackId")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<string>("Artist");
+
                     b.Property<int?>("PlaylistId");
 
+                    b.Property<string>("TrackName");
+
                     b.Property<int>("UserId");
-
-                    b.Property<string>("data_artist");
-
-                    b.Property<string>("data_track");
 
                     b.HasKey("TrackId");
 
